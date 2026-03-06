@@ -1,5 +1,12 @@
 /* Основные переменные и сброс стилей */
 :root {
+    --transition: all 0.3s ease;
+    --radius: 16px;
+    --radius-sm: 8px;
+}
+
+/* Светлая тема (по умолчанию) */
+.light-theme {
     --primary: #6c5ce7;
     --primary-light: #a29bfe;
     --primary-dark: #5649c0;
@@ -9,11 +16,39 @@
     --gray: #636e72;
     --light: #f5f6fa;
     --white: #ffffff;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f6fa;
+    --text-primary: #2d3436;
+    --text-secondary: #636e72;
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     --shadow-hover: 0 20px 40px rgba(108, 92, 231, 0.15);
-    --transition: all 0.3s ease;
-    --radius: 16px;
-    --radius-sm: 8px;
+    --card-bg: #ffffff;
+    --border-color: rgba(0, 0, 0, 0.05);
+    --footer-bg: #2d3436;
+    --footer-text: #ffffff;
+}
+
+/* Темная тема (при переключении) */
+.dark-theme {
+    --primary: #8a7be8;
+    --primary-light: #6c5ce7;
+    --primary-dark: #4a3fb0;
+    --secondary: #00b8b5;
+    --secondary-light: #01918f;
+    --dark: #f5f6fa;
+    --gray: #b2bec3;
+    --light: #1e272e;
+    --white: #2d3436;
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #b2bec3;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 20px 40px rgba(108, 92, 231, 0.25);
+    --card-bg: #2d2d2d;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --footer-bg: #0a0a0a;
+    --footer-text: #ffffff;
 }
 
 * {
@@ -28,10 +63,11 @@ html {
 
 body {
     font-family: 'Inter', sans-serif;
-    color: var(--dark);
+    color: var(--text-primary);
     line-height: 1.6;
-    background-color: var(--white);
+    background-color: var(--bg-primary);
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -40,17 +76,68 @@ body {
     padding: 0 20px;
 }
 
+/* Кнопка переключения темы */
+.theme-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--primary);
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--shadow-hover);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1) rotate(15deg);
+}
+
+.theme-toggle i {
+    font-size: 1.8rem;
+    color: white;
+    position: absolute;
+    transition: var(--transition);
+}
+
+.theme-toggle .fa-sun {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+.theme-toggle .fa-moon {
+    opacity: 0;
+    transform: rotate(90deg);
+}
+
+.dark-theme .theme-toggle .fa-sun {
+    opacity: 0;
+    transform: rotate(-90deg);
+}
+
+.dark-theme .theme-toggle .fa-moon {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
 /* Шапка сайта */
 .header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: var(--bg-primary);
     backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow);
     z-index: 1000;
     padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .header .container {
@@ -86,7 +173,7 @@ body {
 
 .nav-link {
     text-decoration: none;
-    color: var(--dark);
+    color: var(--text-primary);
     font-weight: 500;
     transition: var(--transition);
     position: relative;
@@ -114,7 +201,7 @@ body {
 /* Герой-секция */
 .hero {
     padding: 140px 0 80px;
-    background: linear-gradient(135deg, #f6f9fc 0%, #f1f4f9 100%);
+    background: var(--bg-secondary);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -136,7 +223,7 @@ body {
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 20px;
-    background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -144,7 +231,7 @@ body {
 
 .hero-subtitle {
     font-size: 1.2rem;
-    color: var(--gray);
+    color: var(--text-secondary);
     margin-bottom: 40px;
     max-width: 500px;
 }
@@ -178,7 +265,7 @@ body {
 }
 
 .btn-secondary {
-    background: white;
+    background: transparent;
     color: var(--primary);
     border: 2px solid var(--primary-light);
 }
@@ -196,8 +283,9 @@ body {
 
 .hero-image img {
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
     height: auto;
+    border-radius: var(--radius);
 }
 
 .floating {
@@ -210,12 +298,12 @@ body {
     font-weight: 700;
     text-align: center;
     margin-bottom: 20px;
-    color: var(--dark);
+    color: var(--text-primary);
 }
 
 .section-subtitle {
     text-align: center;
-    color: var(--gray);
+    color: var(--text-secondary);
     font-size: 1.2rem;
     margin-bottom: 60px;
 }
@@ -223,7 +311,7 @@ body {
 /* Секция "О нас" */
 .about-section {
     padding: 100px 0;
-    background: white;
+    background: var(--bg-primary);
 }
 
 .about-grid {
@@ -233,13 +321,13 @@ body {
 }
 
 .about-card {
-    background: white;
+    background: var(--card-bg);
     padding: 40px 30px;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     transition: var(--transition);
     text-align: center;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
 }
 
 .about-card:hover {
@@ -255,11 +343,11 @@ body {
 
 .about-card h3 {
     margin-bottom: 15px;
-    color: var(--dark);
+    color: var(--text-primary);
 }
 
 .about-card p {
-    color: var(--gray);
+    color: var(--text-secondary);
     font-size: 0.95rem;
 }
 
@@ -267,7 +355,7 @@ body {
 .articles-section,
 .videos-section {
     padding: 80px 0;
-    background-color: var(--light);
+    background-color: var(--bg-secondary);
 }
 
 .filter-tabs {
@@ -281,14 +369,15 @@ body {
 .filter-btn {
     padding: 10px 24px;
     border: none;
-    background: white;
+    background: var(--card-bg);
     border-radius: 30px;
     cursor: pointer;
     font-weight: 500;
-    color: var(--gray);
+    color: var(--text-secondary);
     transition: var(--transition);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow);
     font-size: 0.95rem;
+    border: 1px solid var(--border-color);
 }
 
 .filter-btn:hover {
@@ -313,12 +402,13 @@ body {
 
 .article-card,
 .video-card {
-    background: white;
+    background: var(--card-bg);
     border-radius: var(--radius);
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: var(--transition);
     cursor: pointer;
+    border: 1px solid var(--border-color);
 }
 
 .article-card:hover,
@@ -339,13 +429,14 @@ body {
     position: absolute;
     top: 15px;
     left: 15px;
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--card-bg);
     padding: 6px 12px;
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--primary);
     backdrop-filter: blur(5px);
+    border: 1px solid var(--border-color);
 }
 
 .video-duration {
@@ -369,20 +460,21 @@ body {
     margin-bottom: 10px;
     font-size: 1.2rem;
     line-height: 1.4;
+    color: var(--text-primary);
 }
 
 .article-meta,
 .video-meta {
     display: flex;
     justify-content: space-between;
-    color: var(--gray);
+    color: var(--text-secondary);
     font-size: 0.9rem;
     margin-bottom: 15px;
 }
 
 .article-excerpt,
 .video-description {
-    color: var(--gray);
+    color: var(--text-secondary);
     font-size: 0.95rem;
     margin-bottom: 15px;
     line-height: 1.5;
@@ -416,13 +508,14 @@ body {
     align-items: center;
     gap: 10px;
     padding: 12px 30px;
-    background: white;
+    background: var(--card-bg);
     color: var(--primary);
     text-decoration: none;
     border-radius: 30px;
     font-weight: 600;
     box-shadow: var(--shadow);
     transition: var(--transition);
+    border: 1px solid var(--border-color);
 }
 
 .view-more-link:hover {
@@ -435,7 +528,7 @@ body {
 /* Секция с цитатой */
 .quote-section {
     padding: 100px 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: white;
     text-align: center;
 }
@@ -466,8 +559,8 @@ body {
 
 /* Подвал */
 .footer {
-    background: var(--dark);
-    color: white;
+    background: var(--footer-bg);
+    color: var(--footer-text);
     padding: 60px 0 20px;
 }
 
@@ -490,6 +583,7 @@ body {
 .footer-logo .logo-text {
     -webkit-text-fill-color: white;
     background: none;
+    color: white;
 }
 
 .footer-about {
@@ -500,6 +594,7 @@ body {
 .footer-col h4 {
     margin-bottom: 20px;
     font-size: 1.2rem;
+    color: white;
 }
 
 .footer-links {
@@ -538,7 +633,7 @@ body {
 .loading {
     text-align: center;
     padding: 60px;
-    color: var(--gray);
+    color: var(--text-secondary);
     font-size: 1.1rem;
     grid-column: 1 / -1;
 }
@@ -577,20 +672,20 @@ body {
         grid-template-columns: 1fr;
         text-align: center;
     }
-
+    
     .hero-subtitle {
         margin-left: auto;
         margin-right: auto;
     }
-
+    
     .hero-buttons {
         justify-content: center;
     }
-
+    
     .about-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-
+    
     .footer-grid {
         grid-template-columns: 1fr 1fr;
     }
@@ -600,29 +695,29 @@ body {
     .hero-title {
         font-size: 2.5rem;
     }
-
+    
     .section-title {
         font-size: 2rem;
     }
-
+    
     .nav {
         gap: 20px;
     }
-
+    
     .articles-grid,
     .videos-grid {
         grid-template-columns: 1fr;
     }
-
+    
     .about-grid {
         grid-template-columns: 1fr;
     }
-
+    
     .footer-grid {
         grid-template-columns: 1fr;
         gap: 30px;
     }
-
+    
     .filter-tabs {
         overflow-x: auto;
         padding-bottom: 10px;
@@ -634,9 +729,16 @@ body {
     .hero-buttons {
         flex-direction: column;
     }
-
+    
     .btn {
         width: 100%;
         text-align: center;
+    }
+    
+    .theme-toggle {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
     }
 }
