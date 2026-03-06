@@ -17,7 +17,7 @@
     --light: #f5f6fa;
     --white: #ffffff;
     --bg-primary: #ffffff;
-    --bg-secondary: #f5f6fa;
+    --bg-secondary: #f8f9ff;
     --text-primary: #2d3436;
     --text-secondary: #636e72;
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -28,26 +28,26 @@
     --footer-text: #ffffff;
 }
 
-/* Темная тема (при переключении) */
+/* Темная тема (красивая) */
 .dark-theme {
-    --primary: #8a7be8;
-    --primary-light: #6c5ce7;
-    --primary-dark: #4a3fb0;
-    --secondary: #00b8b5;
-    --secondary-light: #01918f;
-    --dark: #f5f6fa;
-    --gray: #b2bec3;
-    --light: #1e272e;
-    --white: #2d3436;
-    --bg-primary: #1a1a1a;
-    --bg-secondary: #2d2d2d;
-    --text-primary: #ffffff;
-    --text-secondary: #b2bec3;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    --shadow-hover: 0 20px 40px rgba(108, 92, 231, 0.25);
-    --card-bg: #2d2d2d;
+    --primary: #9d8cff;
+    --primary-light: #b4a6ff;
+    --primary-dark: #7b6be0;
+    --secondary: #6cd4d1;
+    --secondary-light: #8fe9e6;
+    --dark: #f1f1f1;
+    --gray: #cbd5e0;
+    --light: #2d3748;
+    --white: #1a202c;
+    --bg-primary: #0b0f17;
+    --bg-secondary: #151f2b;
+    --text-primary: #e2e8f0;
+    --text-secondary: #a0b3c9;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --shadow-hover: 0 20px 40px rgba(157, 140, 255, 0.25);
+    --card-bg: #1e2a3a;
     --border-color: rgba(255, 255, 255, 0.1);
-    --footer-bg: #0a0a0a;
+    --footer-bg: #05080c;
     --footer-text: #ffffff;
 }
 
@@ -291,6 +291,7 @@ body {
     width: 100%;
     max-width: 400px;
     height: auto;
+    filter: drop-shadow(0 10px 20px rgba(108, 92, 231, 0.2));
 }
 
 .floating {
