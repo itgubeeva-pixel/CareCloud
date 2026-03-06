@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareCloud - Твое пространство заботы о себе</title>
+
+    <!-- Подключаем стили -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Подключаем шрифт Inter от Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+
+    <!-- Добавляем Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</x>
+<body>
+    <!-- Шапка сайта с навигацией -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">☁️</span>
+                <span class="logo-text">CareCloud</span>
+            </div>
+            <nav class="nav">
+                <a href="#about" class="nav-link">О нас</a>
+                <a href="#articles" class="nav-link">Статьи</a>
+                <a href="#videos" class="nav-link">Видео</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Герой-секция с приветствием -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Твое пространство заботы о себе</h1>
+                <p class="hero-subtitle">Здесь ты найдешь вдохновение, знания и практики для гармоничной жизни. Без сложной статистики и синхронизаций — просто полезный контент для тебя.</p>
+                <div class="hero-buttons">
+                    <a href="#articles" class="btn btn-primary">Читать статьи</a>
+                    <a href="#videos" class="btn btn-secondary">Смотреть видео</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://illustrations.popsy.co/white/mental-health.svg" alt="Забота о себе" class="floating">
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция "О нас" -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">О проекте CareCloud</h2>
+            <p class="section-subtitle">Мы создаем пространство, где забота о себе становится привычкой</p>
+
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon">🌿</div>
+                    <h3>Для гармонии</h3>
+                    <p>Статьи и видео, которые помогут найти баланс в повседневной жизни</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">📚</div>
+                    <h3>Проверенные знания</h3>
+                    <p>Материалы от психологов, коучей и экспертов по саморазвитию</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">🧘</div>
+                    <h3>Практика каждый день</h3>
+                    <p>Медитации, дыхательные практики и упражнения для души и тела</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">🤍</div>
+                    <h3>С заботой о тебе</h3>
+                    <p>Без сложной регистрации и синхронизаций — только полезный контент</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция со статьями -->
+    <section id="articles" class="articles-section">
+        <div class="container">
+            <h2 class="section-title">📚 Статьи для осознанной жизни</h2>
+            <p class="section-subtitle">Психология, саморазвитие, здоровые привычки</p>
+
+            <!-- Фильтры для статей (обновленные) -->
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">Все статьи</button>
+                <button class="filter-btn" data-filter="психология">🧠 Психология</button>
+                <button class="filter-btn" data-filter="саморазвитие">🌱 Саморазвитие</button>
+                <button class="filter-btn" data-filter="здоровье">💪 Здоровье</button>
+                <button class="filter-btn" data-filter="осознанность">🧘 Осознанность</button>
+                <button class="filter-btn" data-filter="отношения">🤝 Отношения</button>
+                <button class="filter-btn" data-filter="привычки">⏰ Привычки</button>
+            </div>
+
+            <!-- Контейнер для отображения статей -->
+            <div class="articles-grid" id="articles-container">
+                <!-- Статьи будут загружаться сюда из data.json -->
+                <div class="loading">Загрузка статей...</div>
+            </div>
+
+            <div class="view-more">
+                <a href="#" class="view-more-link">Смотреть все статьи <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция с видео -->
+    <section id="videos" class="videos-section">
+        <div class="container">
+            <h2 class="section-title">🎥 Видео для вдохновения</h2>
+            <p class="section-subtitle">Короткие практики и глубокие лекции</p>
+
+            <!-- Фильтры для видео (обновленные) -->
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter-video="all">Все видео</button>
+                <button class="filter-btn" data-filter-video="медитация">🧘 Медитации</button>
+                <button class="filter-btn" data-filter-video="йога">🧘‍♀️ Йога</button>
+                <button class="filter-btn" data-filter-video="дыхание">🌬️ Дыхание</button>
+                <button class="filter-btn" data-filter-video="лекции">📺 Лекции</button>
+                <button class="filter-btn" data-filter-video="практики">✨ Практики</button>
+                <button class="filter-btn" data-filter-video="мотивация">⚡ Мотивация</button>
+            </div>
+
+            <!-- Контейнер для отображения видео -->
+            <div class="videos-grid" id="videos-container">
+                <div class="loading">Загрузка видео...</div>
+            </div>
+
+            <div class="view-more">
+                <a href="#" class="view-more-link">Смотреть все видео <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция с цитатой для вдохновения -->
+    <section class="quote-section">
+        <div class="container">
+            <div class="quote-block">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p class="quote-text">Забота о себе — это не эгоизм. Это необходимость, как дыхание. Это способ существовать в мире и при этом оставаться собой.</p>
+                <p class="quote-author">— неизвестный автор</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал сайта -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="logo-icon">☁️</span>
+                        <span class="logo-text">CareCloud</span>
+                    </div>
+                    <p class="footer-about">Твое пространство заботы о себе. Без сложной статистики — только полезный контент.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Навигация</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#articles">Статьи</a></li>
+                        <li><a href="#videos">Видео</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Популярное</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Как начать медитировать</a></li>
+                        <li><a href="#">Утренние привычки</a></li>
+                        <li><a href="#">Дыхание для спокойствия</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 CareCloud | Забота о ментальном здоровье</p>
+                <p class="disclaimer">Информация на сайте не заменяет профессиональную медицинскую помощь</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Подключаем JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
