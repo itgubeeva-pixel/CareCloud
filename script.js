@@ -1,49 +1,28 @@
-// Данные будут загружаться из JSON файла
+// Данные уже есть в HTML (встроенные)
 let articlesData = [];
 let videosData = [];
 
 // Загрузка данных при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
-    loadData();
+    // Берем данные из глобальных переменных, которые объявлены в HTML
+    if (typeof ARTICLES_DATA !== 'undefined' && typeof VIDEOS_DATA !== 'undefined') {
+        articlesData = ARTICLES_DATA;
+        videosData = VIDEOS_DATA;
+    } else {
+        // Если вдруг данных нет, создаем резервные
+        console.warn('Данные не найдены, создаем резервные');
+        createBackupData();
+    }
+    
+    displayArticles('all');
+    displayVideos('all');
     setupSmoothScrolling();
     setupFilterButtons();
     setupThemeToggle();
 });
 
-// Загрузка данных из JSON
-async function loadData() {
-    try {
-        // Пробуем разные пути для загрузки данных
-        let response;
-        
-        // Сначала пробуем через data.json (если файл в корне web)
-        try {
-            response = await fetch('data.json');
-            if (!response.ok) throw new Error('Not found in root');
-        } catch {
-            // Если не нашли, пробуем через web/data.json
-            response = await fetch('web/data.json');
-        }
-        
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        articlesData = data.articles;
-        videosData = data.videos;
-        
-        displayArticles('all');
-        displayVideos('all');
-    } catch (error) {
-        console.error('Ошибка загрузки данных:', error);
-        // Показываем демо-данные вместо ошибки
-        showDemoData();
-    }
-}
-
-// Показать демо-данные если файл не найден
-function showDemoData() {
-    // Демо-статьи
+// Создание резервных данных (на всякий случай)
+function createBackupData() {
     articlesData = [
         {
             id: 1,
@@ -52,121 +31,31 @@ function showDemoData() {
             readTime: "7 мин",
             date: "15 марта 2026",
             image: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=400",
-            excerpt: "Простые техники, которые помогут успокоиться за 5 минут."
+            excerpt: "Простые техники, которые помогут успокоиться."
         },
         {
             id: 2,
-            title: "Утренние ритуалы для продуктивного дня",
+            title: "Утренние ритуалы",
             category: "привычки",
             readTime: "10 мин",
             date: "12 марта 2026",
             image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400",
-            excerpt: "С чего начинать день, чтобы быть продуктивным и спокойным."
-        },
-        {
-            id: 3,
-            title: "Как полюбить себя: руководство",
-            category: "саморазвитие",
-            readTime: "12 мин",
-            date: "10 марта 2026",
-            image: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=400",
-            excerpt: "Пошаговые упражнения для повышения самооценки."
-        },
-        {
-            id: 4,
-            title: "Дыхательные техники для спокойствия",
-            category: "осознанность",
-            readTime: "5 мин",
-            date: "8 марта 2026",
-            image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400",
-            excerpt: "Простые упражнения для быстрого расслабления."
-        },
-        {
-            id: 5,
-            title: "Здоровые отношения: 5 признаков",
-            category: "отношения",
-            readTime: "8 мин",
-            date: "5 марта 2026",
-            image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400",
-            excerpt: "Как распознать нездоровые отношения."
-        },
-        {
-            id: 6,
-            title: "Питание для ментального здоровья",
-            category: "здоровье",
-            readTime: "10 мин",
-            date: "3 марта 2026",
-            image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400",
-            excerpt: "Какие продукты помогают бороться со стрессом."
+            excerpt: "Как начать день с энергии."
         }
     ];
     
-    // Демо-видео
     videosData = [
         {
             id: 1,
-            title: "10-минутная медитация для успокоения",
+            title: "10-минутная медитация",
             category: "медитация",
             duration: "10:23",
             views: "12K",
             thumbnail: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400",
             youtubeId: "inpok4MKVLM",
-            description: "Короткая медитация для снятия стресса."
-        },
-        {
-            id: 2,
-            title: "Йога для начинающих: утро",
-            category: "йога",
-            duration: "15:47",
-            views: "8.5K",
-            thumbnail: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400",
-            youtubeId: "v7AYKMP6rOE",
-            description: "Мягкая утренняя йога для бодрости."
-        },
-        {
-            id: 3,
-            title: "Дыхание для снятия стресса",
-            category: "дыхание",
-            duration: "8:15",
-            views: "5.2K",
-            thumbnail: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400",
-            youtubeId: "GQm5NwFh8Rk",
-            description: "Эффективные дыхательные техники."
-        },
-        {
-            id: 4,
-            title: "Как перестать переживать",
-            category: "лекции",
-            duration: "25:30",
-            views: "18K",
-            thumbnail: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=400",
-            youtubeId: "dB7KNdUJkZE",
-            description: "Лекция психолога о стрессе."
-        },
-        {
-            id: 5,
-            title: "Вечерняя йога для сна",
-            category: "йога",
-            duration: "20:10",
-            views: "7.3K",
-            thumbnail: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400",
-            youtubeId: "hJbRpHZr_d0",
-            description: "Расслабляющая практика перед сном."
-        },
-        {
-            id: 6,
-            title: "Практика благодарности",
-            category: "практики",
-            duration: "7:30",
-            views: "4.8K",
-            thumbnail: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=400",
-            youtubeId: "W8jT0LQnU6c",
-            description: "Учимся замечать хорошее каждый день."
+            description: "Медитация для успокоения."
         }
     ];
-    
-    displayArticles('all');
-    displayVideos('all');
 }
 
 // Отображение статей с фильтром
@@ -181,6 +70,11 @@ function displayArticles(filter = 'all') {
     const filteredArticles = filter === 'all' 
         ? articlesData 
         : articlesData.filter(article => article.category === filter);
+    
+    if (filteredArticles.length === 0) {
+        container.innerHTML = '<div class="loading">Нет статей в этой категории</div>';
+        return;
+    }
     
     container.innerHTML = filteredArticles.map(article => createArticleCard(article)).join('');
 }
@@ -198,6 +92,11 @@ function displayVideos(filter = 'all') {
         ? videosData 
         : videosData.filter(video => video.category === filter);
     
+    if (filteredVideos.length === 0) {
+        container.innerHTML = '<div class="loading">Нет видео в этой категории</div>';
+        return;
+    }
+    
     container.innerHTML = filteredVideos.map(video => createVideoCard(video)).join('');
 }
 
@@ -206,13 +105,13 @@ function createArticleCard(article) {
     return `
         <div class="article-card" data-category="${article.category}">
             <div class="article-image" style="background-image: url('${article.image}')">
-                <span class="article-category">${article.category}</span>
+                <span class="article-category">${translateCategory(article.category)}</span>
             </div>
             <div class="article-content">
                 <h3>${article.title}</h3>
                 <div class="article-meta">
-                    <span>${article.readTime} чтения</span>
-                    <span>${article.date}</span>
+                    <span><i class="far fa-clock"></i> ${article.readTime}</span>
+                    <span><i class="far fa-calendar"></i> ${article.date}</span>
                 </div>
                 <p class="article-excerpt">${article.excerpt}</p>
                 <a href="#" class="read-more" onclick="openArticle(${article.id})">
@@ -228,13 +127,13 @@ function createVideoCard(video) {
     return `
         <div class="video-card" data-category="${video.category}">
             <div class="video-thumbnail" style="background-image: url('${video.thumbnail}')">
-                <span class="article-category">${video.category}</span>
-                <span class="video-duration">${video.duration}</span>
+                <span class="article-category">${translateCategory(video.category)}</span>
+                <span class="video-duration"><i class="far fa-clock"></i> ${video.duration}</span>
             </div>
             <div class="video-content">
                 <h3>${video.title}</h3>
                 <div class="video-meta">
-                    <span>${video.views} просмотров</span>
+                    <span><i class="far fa-eye"></i> ${video.views}</span>
                 </div>
                 <p class="video-description">${video.description}</p>
                 <a href="#" class="watch-btn" onclick="openVideo('${video.youtubeId}')">
@@ -243,6 +142,24 @@ function createVideoCard(video) {
             </div>
         </div>
     `;
+}
+
+// Перевод категорий на русский
+function translateCategory(category) {
+    const translations = {
+        'психология': '🧠 Психология',
+        'саморазвитие': '🌱 Саморазвитие',
+        'здоровье': '💪 Здоровье',
+        'осознанность': '🧘 Осознанность',
+        'отношения': '🤝 Отношения',
+        'привычки': '⏰ Привычки',
+        'медитация': '🧘 Медитация',
+        'йога': '🧘‍♀️ Йога',
+        'дыхание': '🌬️ Дыхание',
+        'лекции': '📺 Лекции',
+        'практики': '✨ Практики'
+    };
+    return translations[category] || category;
 }
 
 // Настройка фильтров
