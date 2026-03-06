@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadData();
     setupSmoothScrolling();
     setupFilterButtons();
+    setupThemeToggle();
 });
 
 // Загрузка данных из JSON
@@ -19,7 +20,7 @@ async function loadData() {
         const data = await response.json();
         articlesData = data.articles;
         videosData = data.videos;
-
+        
         displayArticles('all');
         displayVideos('all');
     } catch (error) {
@@ -32,32 +33,32 @@ async function loadData() {
 // Отображение статей с фильтром
 function displayArticles(filter = 'all') {
     const container = document.getElementById('articles-container');
-
+    
     if (!articlesData || articlesData.length === 0) {
         container.innerHTML = '<div class="loading">Нет статей для отображения</div>';
         return;
     }
-
-    const filteredArticles = filter === 'all'
-        ? articlesData
+    
+    const filteredArticles = filter === 'all' 
+        ? articlesData 
         : articlesData.filter(article => article.category === filter);
-
+    
     container.innerHTML = filteredArticles.map(article => createArticleCard(article)).join('');
 }
 
 // Отображение видео с фильтром
 function displayVideos(filter = 'all') {
     const container = document.getElementById('videos-container');
-
+    
     if (!videosData || videosData.length === 0) {
         container.innerHTML = '<div class="loading">Нет видео для отображения</div>';
         return;
     }
-
-    const filteredVideos = filter === 'all'
-        ? videosData
+    
+    const filteredVideos = filter === 'all' 
+        ? videosData 
         : videosData.filter(video => video.category === filter);
-
+    
     container.innerHTML = filteredVideos.map(video => createVideoCard(video)).join('');
 }
 
@@ -111,11 +112,8 @@ function setupFilterButtons() {
     const filterButtons = document.querySelectorAll('[data-filter]');
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Убираем активный класс у всех кнопок
             filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Добавляем активный класс текущей кнопке
             button.classList.add('active');
-            // Фильтруем статьи
             const filter = button.dataset.filter;
             displayArticles(filter);
         });
@@ -125,14 +123,35 @@ function setupFilterButtons() {
     const filterVideoButtons = document.querySelectorAll('[data-filter-video]');
     filterVideoButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Убираем активный класс у всех кнопок видео
             filterVideoButtons.forEach(btn => btn.classList.remove('active'));
-            // Добавляем активный класс текущей кнопке
             button.classList.add('active');
-            // Фильтруем видео
             const filter = button.dataset.filterVideo;
             displayVideos(filter);
         });
+    });
+}
+
+// Настройка переключения темы
+function setupThemeToggle() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    
+    // Проверяем сохраненную тему
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        body.className = savedTheme;
+    }
+    
+    themeToggle.addEventListener('click', () => {
+        if (body.classList.contains('light-theme')) {
+            body.classList.remove('light-theme');
+            body.classList.add('dark-theme');
+            localStorage.setItem('theme', 'dark-theme');
+        } else {
+            body.classList.remove('dark-theme');
+            body.classList.add('light-theme');
+            localStorage.setItem('theme', 'light-theme');
+        }
     });
 }
 
