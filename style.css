@@ -254,27 +254,33 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    color: white;
-    box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
+    background: white;
+    color: var(--primary);
+    border: 2px solid var(--primary-light);
+    box-shadow: var(--shadow);
 }
 
 .btn-primary:hover {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    border-color: transparent;
     transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(108, 92, 231, 0.4);
+    box-shadow: 0 15px 30px rgba(108, 92, 231, 0.3);
 }
 
 .btn-secondary {
-    background: transparent;
+    background: white;
     color: var(--primary);
     border: 2px solid var(--primary-light);
+    box-shadow: var(--shadow);
 }
 
 .btn-secondary:hover {
-    background: var(--primary-light);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: white;
-    border-color: var(--primary-light);
+    border-color: transparent;
     transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(108, 92, 231, 0.3);
 }
 
 .hero-image {
@@ -285,7 +291,6 @@ body {
     width: 100%;
     max-width: 400px;
     height: auto;
-    border-radius: var(--radius);
 }
 
 .floating {
@@ -550,11 +555,6 @@ body {
     line-height: 1.4;
     margin-bottom: 30px;
     font-style: italic;
-}
-
-.quote-author {
-    font-size: 1.1rem;
-    opacity: 0.8;
 }
 
 /* Подвал */
