@@ -28,7 +28,7 @@
     --footer-text: #ffffff;
 }
 
-/* Темная тема (красивая) */
+/* Красивая темная тема (глубокий синий) */
 .dark-theme {
     --primary: #9d8cff;
     --primary-light: #b4a6ff;
@@ -39,15 +39,15 @@
     --gray: #cbd5e0;
     --light: #2d3748;
     --white: #1a202c;
-    --bg-primary: #0b0f17;
-    --bg-secondary: #151f2b;
-    --text-primary: #e2e8f0;
-    --text-secondary: #a0b3c9;
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     --shadow-hover: 0 20px 40px rgba(157, 140, 255, 0.25);
-    --card-bg: #1e2a3a;
+    --card-bg: #1e293b;
     --border-color: rgba(255, 255, 255, 0.1);
-    --footer-bg: #05080c;
+    --footer-bg: #0a0f1a;
     --footer-text: #ffffff;
 }
 
