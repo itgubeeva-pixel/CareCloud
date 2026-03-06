@@ -13,7 +13,18 @@ document.addEventListener('DOMContentLoaded', function() {
 // Загрузка данных из JSON
 async function loadData() {
     try {
-        const response = await fetch('web/data.json');
+        // Пробуем разные пути для загрузки данных
+        let response;
+        
+        // Сначала пробуем через data.json (если файл в корне web)
+        try {
+            response = await fetch('data.json');
+            if (!response.ok) throw new Error('Not found in root');
+        } catch {
+            // Если не нашли, пробуем через web/data.json
+            response = await fetch('web/data.json');
+        }
+        
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -25,9 +36,137 @@ async function loadData() {
         displayVideos('all');
     } catch (error) {
         console.error('Ошибка загрузки данных:', error);
-        showError('articles-container');
-        showError('videos-container');
+        // Показываем демо-данные вместо ошибки
+        showDemoData();
     }
+}
+
+// Показать демо-данные если файл не найден
+function showDemoData() {
+    // Демо-статьи
+    articlesData = [
+        {
+            id: 1,
+            title: "10 способов снизить тревожность",
+            category: "психология",
+            readTime: "7 мин",
+            date: "15 марта 2026",
+            image: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=400",
+            excerpt: "Простые техники, которые помогут успокоиться за 5 минут."
+        },
+        {
+            id: 2,
+            title: "Утренние ритуалы для продуктивного дня",
+            category: "привычки",
+            readTime: "10 мин",
+            date: "12 марта 2026",
+            image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400",
+            excerpt: "С чего начинать день, чтобы быть продуктивным и спокойным."
+        },
+        {
+            id: 3,
+            title: "Как полюбить себя: руководство",
+            category: "саморазвитие",
+            readTime: "12 мин",
+            date: "10 марта 2026",
+            image: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=400",
+            excerpt: "Пошаговые упражнения для повышения самооценки."
+        },
+        {
+            id: 4,
+            title: "Дыхательные техники для спокойствия",
+            category: "осознанность",
+            readTime: "5 мин",
+            date: "8 марта 2026",
+            image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400",
+            excerpt: "Простые упражнения для быстрого расслабления."
+        },
+        {
+            id: 5,
+            title: "Здоровые отношения: 5 признаков",
+            category: "отношения",
+            readTime: "8 мин",
+            date: "5 марта 2026",
+            image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400",
+            excerpt: "Как распознать нездоровые отношения."
+        },
+        {
+            id: 6,
+            title: "Питание для ментального здоровья",
+            category: "здоровье",
+            readTime: "10 мин",
+            date: "3 марта 2026",
+            image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400",
+            excerpt: "Какие продукты помогают бороться со стрессом."
+        }
+    ];
+    
+    // Демо-видео
+    videosData = [
+        {
+            id: 1,
+            title: "10-минутная медитация для успокоения",
+            category: "медитация",
+            duration: "10:23",
+            views: "12K",
+            thumbnail: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400",
+            youtubeId: "inpok4MKVLM",
+            description: "Короткая медитация для снятия стресса."
+        },
+        {
+            id: 2,
+            title: "Йога для начинающих: утро",
+            category: "йога",
+            duration: "15:47",
+            views: "8.5K",
+            thumbnail: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400",
+            youtubeId: "v7AYKMP6rOE",
+            description: "Мягкая утренняя йога для бодрости."
+        },
+        {
+            id: 3,
+            title: "Дыхание для снятия стресса",
+            category: "дыхание",
+            duration: "8:15",
+            views: "5.2K",
+            thumbnail: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400",
+            youtubeId: "GQm5NwFh8Rk",
+            description: "Эффективные дыхательные техники."
+        },
+        {
+            id: 4,
+            title: "Как перестать переживать",
+            category: "лекции",
+            duration: "25:30",
+            views: "18K",
+            thumbnail: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=400",
+            youtubeId: "dB7KNdUJkZE",
+            description: "Лекция психолога о стрессе."
+        },
+        {
+            id: 5,
+            title: "Вечерняя йога для сна",
+            category: "йога",
+            duration: "20:10",
+            views: "7.3K",
+            thumbnail: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400",
+            youtubeId: "hJbRpHZr_d0",
+            description: "Расслабляющая практика перед сном."
+        },
+        {
+            id: 6,
+            title: "Практика благодарности",
+            category: "практики",
+            duration: "7:30",
+            views: "4.8K",
+            thumbnail: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=400",
+            youtubeId: "W8jT0LQnU6c",
+            description: "Учимся замечать хорошее каждый день."
+        }
+    ];
+    
+    displayArticles('all');
+    displayVideos('all');
 }
 
 // Отображение статей с фильтром
@@ -181,16 +320,6 @@ function openArticle(id) {
 function openVideo(youtubeId) {
     event.preventDefault();
     alert('Видео будет доступно в следующем обновлении. Сейчас это демо-версия.');
-}
-
-// Показать ошибку
-function showError(containerId) {
-    const container = document.getElementById(containerId);
-    container.innerHTML = `
-        <div class="loading" style="color: #e74c3c;">
-            Ошибка загрузки данных. Пожалуйста, обновите страницу.
-        </div>
-    `;
 }
 
 // Добавляем эффект появления при скролле
