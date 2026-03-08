@@ -13,12 +13,15 @@ document.addEventListener('DOMContentLoaded', function() {
         console.warn('Данные не найдены, создаем резервные');
         createBackupData();
     }
-    
+
     displayArticles('all');
     displayVideos('all');
     setupSmoothScrolling();
     setupFilterButtons();
     setupThemeToggle();
+
+    // Добавляем эффект появления при скролле
+    setupScrollReveal();
 });
 
 // Создание резервных данных (на всякий случай)
@@ -43,7 +46,7 @@ function createBackupData() {
             excerpt: "Как начать день с энергии."
         }
     ];
-    
+
     videosData = [
         {
             id: 1,
@@ -61,42 +64,48 @@ function createBackupData() {
 // Отображение статей с фильтром
 function displayArticles(filter = 'all') {
     const container = document.getElementById('articles-container');
-    
+
     if (!articlesData || articlesData.length === 0) {
         container.innerHTML = '<div class="loading">Нет статей для отображения</div>';
         return;
     }
-    
-    const filteredArticles = filter === 'all' 
-        ? articlesData 
-        : articlesData.filter(article => article.category === filter);
-    
+
+    // Приводим фильтр к нижнему регистру для сравнения
+    const filterValue = filter.toLowerCase();
+
+    const filteredArticles = filterValue === 'all'
+        ? articlesData
+        : articlesData.filter(article => article.category.toLowerCase() === filterValue);
+
     if (filteredArticles.length === 0) {
         container.innerHTML = '<div class="loading">Нет статей в этой категории</div>';
         return;
     }
-    
+
     container.innerHTML = filteredArticles.map(article => createArticleCard(article)).join('');
 }
 
 // Отображение видео с фильтром
 function displayVideos(filter = 'all') {
     const container = document.getElementById('videos-container');
-    
+
     if (!videosData || videosData.length === 0) {
         container.innerHTML = '<div class="loading">Нет видео для отображения</div>';
         return;
     }
-    
-    const filteredVideos = filter === 'all' 
-        ? videosData 
-        : videosData.filter(video => video.category === filter);
-    
+
+    // Приводим фильтр к нижнему регистру для сравнения
+    const filterValue = filter.toLowerCase();
+
+    const filteredVideos = filterValue === 'all'
+        ? videosData
+        : videosData.filter(video => video.category.toLowerCase() === filterValue);
+
     if (filteredVideos.length === 0) {
         container.innerHTML = '<div class="loading">Нет видео в этой категории</div>';
         return;
     }
-    
+
     container.innerHTML = filteredVideos.map(video => createVideoCard(video)).join('');
 }
 
@@ -114,7 +123,7 @@ function createArticleCard(article) {
                     <span><i class="far fa-calendar"></i> ${article.date}</span>
                 </div>
                 <p class="article-excerpt">${article.excerpt}</p>
-                <a href="#" class="read-more" onclick="openArticle(${article.id})">
+                <a href="#" class="read-more" onclick="openArticle(event, ${article.id})">
                     Читать статью <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -133,10 +142,10 @@ function createVideoCard(video) {
             <div class="video-content">
                 <h3>${video.title}</h3>
                 <div class="video-meta">
-                    <span><i class="far fa-eye"></i> ${video.views}</span>
+                    <span><i class="far fa-eye"></i> ${video.views} просмотров</span>
                 </div>
                 <p class="video-description">${video.description}</p>
-                <a href="#" class="watch-btn" onclick="openVideo('${video.youtubeId}')">
+                <a href="#" class="watch-btn" onclick="openVideo(event, '${video.youtubeId}')">
                     Смотреть видео <i class="fas fa-play"></i>
                 </a>
             </div>
@@ -157,7 +166,8 @@ function translateCategory(category) {
         'йога': '🧘‍♀️ Йога',
         'дыхание': '🌬️ Дыхание',
         'лекции': '📺 Лекции',
-        'практики': '✨ Практики'
+        'практики': '✨ Практики',
+        'мотивация': '⚡ Мотивация'
     };
     return translations[category] || category;
 }
@@ -191,13 +201,13 @@ function setupFilterButtons() {
 function setupThemeToggle() {
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
-    
+
     // Проверяем сохраненную тему
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         body.className = savedTheme;
     }
-    
+
     themeToggle.addEventListener('click', () => {
         if (body.classList.contains('light-theme')) {
             body.classList.remove('light-theme');
@@ -216,7 +226,10 @@ function setupSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const target = document.querySelector(targetId);
             if (target) {
                 target.scrollIntoView({
                     behavior: 'smooth',
@@ -227,27 +240,47 @@ function setupSmoothScrolling() {
     });
 }
 
-// Открытие статьи (заглушка)
-function openArticle(id) {
-    event.preventDefault();
-    alert('Статья будет открыта в новой версии сайта. Сейчас это демо-версия.');
-}
-
-// Открытие видео (заглушка)
-function openVideo(youtubeId) {
-    event.preventDefault();
-    alert('Видео будет доступно в следующем обновлении. Сейчас это демо-версия.');
-}
-
-// Добавляем эффект появления при скролле
-window.addEventListener('scroll', function() {
+// Эффект появления при скролле
+function setupScrollReveal() {
     const cards = document.querySelectorAll('.article-card, .video-card, .about-card');
+
+    // Устанавливаем начальные стили
     cards.forEach(card => {
-        const cardTop = card.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        if (cardTop < windowHeight - 100) {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     });
-});
+
+    function checkScroll() {
+        cards.forEach(card => {
+            const cardTop = card.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            if (cardTop < windowHeight - 100) {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }
+        });
+    }
+
+    // Проверяем при загрузке
+    window.addEventListener('load', checkScroll);
+    // Проверяем при скролле
+    window.addEventListener('scroll', checkScroll);
+}
+
+// Открытие статьи (улучшенная заглушка)
+function openArticle(event, id) {
+    event.preventDefault();
+    const article = articlesData.find(a => a.id === id);
+    if (article) {
+        alert(`✨ Статья "${article.title}" будет доступна для чтения в следующем обновлении.\n\nСейчас это демо-версия сайта.`);
+    } else {
+        alert('Статья будет открыта в новой версии сайта. Сейчас это демо-версия.');
+    }
+}
+
+// Открытие видео (улучшенная заглушка)
+function openVideo(event, youtubeId) {
+    event.preventDefault();
+    alert(`🎬 Видео будет доступно для просмотра в следующем обновлении.\n\nYouTube ID: ${youtubeId}\n\nСейчас это демо-версия сайта.`);
+}
