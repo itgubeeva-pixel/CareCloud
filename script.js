@@ -34,17 +34,66 @@ function createBackupData() {
             date: "15 марта 2026",
             image: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=400",
             excerpt: "Простые техники, которые помогут успокоиться.",
-            content: "<h2>10 простых способов снизить тревожность</h2><p>Тревога — это естественная реакция организма на стресс. Но когда она становится постоянной, важно научиться с ней справляться.</p><h3>1. Дыхание по квадрату</h3><p>Вдохните на 4 счета, задержите дыхание на 4 счета, выдохните на 4 счета, задержите на 4 счета. Повторите 5 раз.</p><h3>2. Заземление 5-4-3-2-1</h3><p>Найдите 5 вещей, которые видите, 4 — можете потрогать, 3 — слышите, 2 — можете понюхать, 1 — можете попробовать.</p><h3>3. Прогрессивная мышечная релаксация</h3><p>Напрягите все мышцы тела на 5 секунд, затем резко расслабьте. Повторите 3 раза.</p><h3>4. Визуализация</h3><p>Представьте спокойное место (пляж, лес) со всеми деталями: звуки, запахи, ощущения.</p><h3>5. Физическая активность</h3><p>Сделайте 10 приседаний или просто пройдитесь быстрым шагом 5 минут.</p><h3>6. Объятия</h3><p>Обнимите близкого человека или подушку — это вырабатывает окситоцин.</p><h3>7. Холодная вода</h3><p>Умойтесь холодной водой или подержите руки под холодной водой — это активирует парасимпатическую нервную систему.</p><h3>8. Дневник благодарности</h3><p>Запишите 3 вещи, за которые вы благодарны прямо сейчас.</p><h3>9. Ограничение кофеина</h3><p>Замените кофе на травяной чай — кофеин может усиливать тревогу.</p><h3>10. Разговор с собой</h3><p>Скажите себе: 'Это временно. Я справлюсь. Это просто тревога, она пройдет'.</p>"
+            content: `<h2>10 простых способов снизить тревожность</h2>
+            <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=400" alt="Спокойствие" style="width:100%; border-radius:12px; margin:20px 0;">
+            <p>Тревога — это естественная реакция организма на стресс. Но когда она становится постоянной, важно научиться с ней справляться.</p>
+            
+            <h3>1. Дыхание по квадрату</h3>
+            <p>Вдохните на 4 счета, задержите дыхание на 4 счета, выдохните на 4 счета, задержите на 4 счета. Повторите 5 раз.</p>
+            
+            <h3>2. Заземление 5-4-3-2-1</h3>
+            <p>Найдите 5 вещей, которые вы видите, 4 — можете потрогать, 3 — слышите, 2 — можете понюхать, 1 — можете попробовать на вкус.</p>
+            
+            <h3>3. Прогрессивная мышечная релаксация</h3>
+            <p>Напрягите все мышцы тела на 5 секунд, затем резко расслабьте. Повторите 3 раза.</p>
+            
+            <h3>4. Визуализация</h3>
+            <p>Представьте спокойное место (пляж, лес) со всеми деталями: звуки, запахи, ощущения.</p>
+            
+            <h3>5. Физическая активность</h3>
+            <p>Сделайте 10 приседаний или просто пройдитесь быстрым шагом 5 минут.</p>
+            
+            <h3>6. Объятия</h3>
+            <p>Обнимите близкого человека или подушку — это вырабатывает окситоцин.</p>
+            
+            <h3>7. Холодная вода</h3>
+            <p>Умойтесь холодной водой или подержите руки под холодной водой.</p>
+            
+            <h3>8. Дневник благодарности</h3>
+            <p>Запишите 3 вещи, за которые вы благодарны прямо сейчас.</p>
+            
+            <h3>9. Ограничение кофеина</h3>
+            <p>Замените кофе на травяной чай.</p>
+            
+            <h3>10. Разговор с собой</h3>
+            <p>Скажите себе: "Это временно. Я справлюсь".</p>`
         },
         {
             id: 2,
-            title: "Утренние ритуалы",
+            title: "Утренние ритуалы успешных людей",
             category: "привычки",
             readTime: "10 мин",
             date: "12 марта 2026",
             image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400",
             excerpt: "Как начать день с энергии.",
-            content: "<h2>5 утренних ритуалов успешных людей</h2><p>То, как вы начинаете утро, влияет на весь день.</p>"
+            content: `<h2>5 утренних ритуалов успешных людей</h2>
+            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400" alt="Утро" style="width:100%; border-radius:12px; margin:20px 0;">
+            <p>То, как вы начинаете утро, влияет на весь день. Вот 5 привычек, которые изменят вашу жизнь.</p>
+            
+            <h3>1. Просыпайтесь без телефона</h3>
+            <p>Первые 30 минут после пробуждения не берите в руки телефон. Дайте мозгу проснуться естественно.</p>
+            
+            <h3>2. Стакан воды с лимоном</h3>
+            <p>Вода запускает метаболизм и помогает проснуться быстрее кофе.</p>
+            
+            <h3>3. Легкая зарядка</h3>
+            <p>5-10 минут растяжки или йоги разбудят тело и наполнят энергией.</p>
+            
+            <h3>4. Планирование дня</h3>
+            <p>Запишите 3 главные задачи на день. Это поможет не распыляться.</p>
+            
+            <h3>5. Время для себя</h3>
+            <p>Выпейте чай в тишине, почитайте книгу или помедитируйте 10 минут.</p>`
         }
     ];
 
@@ -57,8 +106,17 @@ function createBackupData() {
             views: "12K",
             thumbnail: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400",
             youtubeId: "inpok4MKVLM",
-            description: "Короткая медитация, которая поможет снять стресс.",
-            embedUrl: "https://www.youtube.com/embed/inpok4MKVLM"
+            description: "Короткая медитация, которая поможет снять стресс."
+        },
+        {
+            id: 2,
+            title: "Йога для начинающих: утренняя практика",
+            category: "йога",
+            duration: "15:47",
+            views: "8.5K",
+            thumbnail: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400",
+            youtubeId: "v7AYKMP6rOE",
+            description: "Мягкая утренняя йога для бодрости."
         }
     ];
 }
@@ -73,7 +131,7 @@ function createModal() {
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 id="modal-title"></h2>
-                    <button class="modal-close" onclick="closeModal()">&times;</button>
+                    <button class="modal-close" id="modal-close-btn">&times;</button>
                 </div>
                 <div class="modal-body" id="modal-body">
                 </div>
@@ -82,6 +140,9 @@ function createModal() {
     `;
 
     document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+    // Добавляем обработчик для кнопки закрытия
+    document.getElementById('modal-close-btn').addEventListener('click', closeModal);
 }
 
 // Открыть модальное окно
@@ -148,6 +209,20 @@ function displayArticles(filter = 'all') {
     }
 
     container.innerHTML = filteredArticles.map(article => createArticleCard(article)).join('');
+
+    // Добавляем обработчики клика на карточки
+    filteredArticles.forEach(article => {
+        const card = document.querySelector(`.article-card[data-id="${article.id}"]`);
+        if (card) {
+            card.addEventListener('click', (e) => {
+                // Предотвращаем всплытие, если клик по ссылке
+                if (e.target.tagName === 'A' || e.target.closest('a')) {
+                    return;
+                }
+                openArticle(article.id);
+            });
+        }
+    });
 }
 
 // Отображение видео с фильтром
@@ -172,12 +247,26 @@ function displayVideos(filter = 'all') {
     }
 
     container.innerHTML = filteredVideos.map(video => createVideoCard(video)).join('');
+
+    // Добавляем обработчики клика на карточки
+    filteredVideos.forEach(video => {
+        const card = document.querySelector(`.video-card[data-id="${video.id}"]`);
+        if (card) {
+            card.addEventListener('click', (e) => {
+                // Предотвращаем всплытие, если клик по ссылке
+                if (e.target.tagName === 'A' || e.target.closest('a')) {
+                    return;
+                }
+                openVideo(video.youtubeId, video.title);
+            });
+        }
+    });
 }
 
-// Создание карточки статьи
+// Создание карточки статьи (БЕЗ onclick)
 function createArticleCard(article) {
     return `
-        <div class="article-card" data-category="${article.category}" onclick="openArticle(${article.id})">
+        <div class="article-card" data-id="${article.id}" data-category="${article.category}">
             <div class="article-image" style="background-image: url('${article.image}')">
                 <span class="article-category">${translateCategory(article.category)}</span>
             </div>
@@ -188,18 +277,18 @@ function createArticleCard(article) {
                     <span><i class="far fa-calendar"></i> ${article.date}</span>
                 </div>
                 <p class="article-excerpt">${article.excerpt}</p>
-                <span class="read-more">
+                <a href="#" class="read-more" onclick="event.preventDefault(); openArticle(${article.id})">
                     Читать статью <i class="fas fa-arrow-right"></i>
-                </span>
+                </a>
             </div>
         </div>
     `;
 }
 
-// Создание карточки видео
+// Создание карточки видео (БЕЗ onclick)
 function createVideoCard(video) {
     return `
-        <div class="video-card" data-category="${video.category}" onclick="openVideo('${video.youtubeId}', '${video.title.replace(/'/g, "\\'")}')">
+        <div class="video-card" data-id="${video.id}" data-category="${video.category}">
             <div class="video-thumbnail" style="background-image: url('${video.thumbnail}')">
                 <span class="article-category">${translateCategory(video.category)}</span>
                 <span class="video-duration"><i class="far fa-clock"></i> ${video.duration}</span>
@@ -213,6 +302,9 @@ function createVideoCard(video) {
                     <span><i class="far fa-eye"></i> ${video.views} просмотров</span>
                 </div>
                 <p class="video-description">${video.description}</p>
+                <a href="#" class="watch-btn" onclick="event.preventDefault(); openVideo('${video.youtubeId}', '${video.title.replace(/'/g, "\\'")}')">
+                    Смотреть видео <i class="fas fa-play"></i>
+                </a>
             </div>
         </div>
     `;
@@ -309,13 +401,6 @@ function setupSmoothScrolling() {
 function setupScrollReveal() {
     const cards = document.querySelectorAll('.article-card, .video-card, .about-card');
 
-    // Устанавливаем начальные стили
-    cards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    });
-
     function checkScroll() {
         cards.forEach(card => {
             const cardTop = card.getBoundingClientRect().top;
@@ -326,6 +411,13 @@ function setupScrollReveal() {
             }
         });
     }
+
+    // Устанавливаем начальные стили
+    cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
 
     // Проверяем при загрузке
     window.addEventListener('load', checkScroll);
