@@ -1,348 +1,90 @@
-// Глобальные переменные
-let articles = [];
-let videos = [];
+// ПРОСТОЙ И РАБОЧИЙ КОД
+console.log('Скрипт загружен!');
 
-// Инициализация при загрузке страницы
+// Данные
+let статьи = [];
+let видео = [];
+
+// Ждем загрузку страницы
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Сайт загружен');
+    console.log('Страница загружена, начинаем работу');
     
     // Загружаем данные
-    loadData();
+    загрузитьДанные();
+    
+    // Показываем контент
+    показатьСтатьи('all');
+    показатьВидео('all');
+    
+    // Настраиваем кнопки
+    настроитьКнопки();
     
     // Создаем модальное окно
-    createModal();
-    
-    // Отображаем контент
-    displayArticles('all');
-    displayVideos('all');
-    
-    // Настраиваем все обработчики
-    setupFilters();
-    setupThemeToggle();
-    setupSmoothScroll();
+    создатьМодалку();
 });
 
-// Загрузка данных из глобальных переменных
-function loadData() {
-    if (typeof ARTICLES_DATA !== 'undefined' && typeof VIDEOS_DATA !== 'undefined') {
-        articles = ARTICLES_DATA;
-        videos = VIDEOS_DATA;
-        console.log('Данные загружены:', articles.length, 'статей,', videos.length, 'видео');
+function загрузитьДанные() {
+    console.log('Загружаем данные...');
+    
+    if (typeof ARTICLES_DATA !== 'undefined') {
+        статьи = ARTICLES_DATA;
+        console.log('Статей загружено:', статьи.length);
     } else {
-        console.error('Данные не найдены');
-        articles = [];
-        videos = [];
-    }
-}
-
-// СОЗДАНИЕ МОДАЛЬНОГО ОКНА
-function createModal() {
-    // Удаляем старое модальное окно, если есть
-    const oldModal = document.getElementById('modal');
-    if (oldModal) oldModal.remove();
-    
-    // Создаем новое
-    const modal = document.createElement('div');
-    modal.id = 'modal';
-    modal.className = 'modal';
-    modal.innerHTML = `
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modal-title"></h2>
-                <button class="modal-close" id="modalCloseBtn">&times;</button>
-            </div>
-            <div class="modal-body" id="modalBody"></div>
-        </div>
-    `;
-    
-    document.body.appendChild(modal);
-    
-    // Обработчики для закрытия
-    document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
-    
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) closeModal();
-    });
-    
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closeModal();
-    });
-}
-
-// ОТКРЫТЬ МОДАЛКУ
-function openModal(title, content) {
-    const modal = document.getElementById('modal');
-    const modalTitle = document.getElementById('modal-title');
-    const modalBody = document.getElementById('modalBody');
-    
-    if (modal && modalTitle && modalBody) {
-        modalTitle.textContent = title;
-        modalBody.innerHTML = content;
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-// ЗАКРЫТЬ МОДАЛКУ
-function closeModal() {
-    const modal = document.getElementById('modal');
-    if (modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = '';
-    }
-}
-
-// ОТОБРАЖЕНИЕ СТАТЕЙ
-function displayArticles(filter = 'all') {
-    const container = document.getElementById('articles-container');
-    if (!container) return;
-    
-    let filteredArticles = [];
-    
-    if (filter === 'all') {
-        filteredArticles = articles;
-    } else {
-        filteredArticles = articles.filter(a => a.category === filter);
-    }
-    
-    if (filteredArticles.length === 0) {
-        container.innerHTML = '<div class="loading">Нет статей в этой категории</div>';
-        return;
-    }
-    
-    let html = '';
-    filteredArticles.forEach(article => {
-        html += `
-            <div class="article-card" data-id="${article.id}">
-                <div class="article-image" style="background-image: url('${article.image}')">
-                    <span class="article-category">${getCategoryName(article.category)}</span>
-                </div>
-                <div class="article-content">
-                    <h3>${article.title}</h3>
-                    <div class="article-meta">
-                        <span><i class="far fa-clock"></i> ${article.readTime}</span>
-                        <span><i class="far fa-calendar"></i> ${article.date}</span>
-                    </div>
-                    <p class="article-excerpt">${article.excerpt}</p>
-                    <button class="read-more-btn" data-id="${article.id}">
-                        Читать статью <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-        `;
-    });
-    
-    container.innerHTML = html;
-    
-    // Добавляем обработчики на кнопки
-    document.querySelectorAll('.read-more-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const id = parseInt(this.dataset.id);
-            openArticleById(id);
-        });
-    });
-    
-    // Добавляем обработчики на карточки
-    document.querySelectorAll('.article-card').forEach(card => {
-        card.addEventListener('click', function(e) {
-            // Если кликнули не по кнопке
-            if (!e.target.closest('.read-more-btn')) {
-                const id = parseInt(this.dataset.id);
-                openArticleById(id);
+        console.log('Данные статей не найдены, создаем тестовые');
+        статьи = [
+            {
+                id: 1,
+                title: "10 способов снизить тревожность",
+                category: "психология",
+                readTime: "7 мин",
+                date: "15 марта 2026",
+                image: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=400",
+                excerpt: "Простые техники для успокоения"
+            },
+            {
+                id: 2,
+                title: "Утренние ритуалы",
+                category: "привычки",
+                readTime: "10 мин",
+                date: "12 марта 2026",
+                image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400",
+                excerpt: "Как начать день с энергии"
             }
-        });
-    });
-}
-
-// ОТОБРАЖЕНИЕ ВИДЕО
-function displayVideos(filter = 'all') {
-    const container = document.getElementById('videos-container');
-    if (!container) return;
+        ];
+    }
     
-    let filteredVideos = [];
-    
-    if (filter === 'all') {
-        filteredVideos = videos;
+    if (typeof VIDEOS_DATA !== 'undefined') {
+        видео = VIDEOS_DATA;
+        console.log('Видео загружено:', видео.length);
     } else {
-        filteredVideos = videos.filter(v => v.category === filter);
-    }
-    
-    if (filteredVideos.length === 0) {
-        container.innerHTML = '<div class="loading">Нет видео в этой категории</div>';
-        return;
-    }
-    
-    let html = '';
-    filteredVideos.forEach(video => {
-        html += `
-            <div class="video-card" data-id="${video.id}">
-                <div class="video-thumbnail" style="background-image: url('${video.thumbnail}')">
-                    <span class="article-category">${getCategoryName(video.category)}</span>
-                    <span class="video-duration"><i class="far fa-clock"></i> ${video.duration}</span>
-                    <div class="play-button">
-                        <i class="fas fa-play"></i>
-                    </div>
-                </div>
-                <div class="video-content">
-                    <h3>${video.title}</h3>
-                    <div class="video-meta">
-                        <span><i class="far fa-eye"></i> ${video.views} просмотров</span>
-                    </div>
-                    <p class="video-description">${video.description}</p>
-                    <button class="watch-btn" data-id="${video.id}" data-youtube="${video.youtubeId}">
-                        Смотреть видео <i class="fas fa-play"></i>
-                    </button>
-                </div>
-            </div>
-        `;
-    });
-    
-    container.innerHTML = html;
-    
-    // Добавляем обработчики на кнопки
-    document.querySelectorAll('.watch-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const youtubeId = this.dataset.youtube;
-            const title = this.closest('.video-card').querySelector('h3').textContent;
-            openVideoById(youtubeId, title);
-        });
-    });
-    
-    // Добавляем обработчики на карточки
-    document.querySelectorAll('.video-card').forEach(card => {
-        card.addEventListener('click', function(e) {
-            // Если кликнули не по кнопке
-            if (!e.target.closest('.watch-btn')) {
-                const youtubeId = this.querySelector('.watch-btn').dataset.youtube;
-                const title = this.querySelector('h3').textContent;
-                openVideoById(youtubeId, title);
+        console.log('Данные видео не найдены, создаем тестовые');
+        видео = [
+            {
+                id: 1,
+                title: "Медитация для успокоения",
+                category: "медитация",
+                duration: "10:23",
+                views: "12K",
+                thumbnail: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400",
+                youtubeId: "inpok4MKVLM",
+                description: "Короткая медитация"
             }
-        });
-    });
-}
-
-// ОТКРЫТЬ СТАТЬЮ ПО ID
-function openArticleById(id) {
-    const article = articles.find(a => a.id === id);
-    if (!article) return;
-    
-    // Если есть полный контент
-    if (article.content) {
-        openModal(article.title, `<div class="article-content-full">${article.content}</div>`);
-    } else {
-        // Демо-контент
-        const content = `
-            <div class="article-content-full">
-                <img src="${article.image}" alt="${article.title}" style="width:100%; border-radius:12px; margin-bottom:20px;">
-                <h2>${article.title}</h2>
-                <p><strong>${article.excerpt}</strong></p>
-                <p>📖 Полная версия статьи будет доступна в ближайшее время.</p>
-                <div style="background:rgba(108,92,231,0.1); padding:20px; border-radius:12px; margin-top:20px;">
-                    <p>✨ Спасибо за интерес к нашему контенту! Мы работаем над наполнением.</p>
-                </div>
-            </div>
-        `;
-        openModal(article.title, content);
+        ];
     }
 }
 
-// ОТКРЫТЬ ВИДЕО ПО ID
-function openVideoById(youtubeId, title) {
-    const content = `
-        <div class="video-wrapper">
-            <iframe 
-                src="https://www.youtube.com/embed/${youtubeId}?autoplay=1" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
-        </div>
-        <div style="margin-top:20px;">
-            <h3>${title}</h3>
-            <p>🎬 Видео загружено с YouTube. Приятного просмотра!</p>
-        </div>
-    `;
-    openModal(title, content);
-}
-
-// ПОЛУЧИТЬ НАЗВАНИЕ КАТЕГОРИИ
-function getCategoryName(category) {
-    const names = {
-        'психология': '🧠 Психология',
-        'саморазвитие': '🌱 Саморазвитие',
-        'здоровье': '💪 Здоровье',
-        'осознанность': '🧘 Осознанность',
-        'отношения': '🤝 Отношения',
-        'привычки': '⏰ Привычки',
-        'медитация': '🧘 Медитация',
-        'йога': '🧘‍♀️ Йога',
-        'дыхание': '🌬️ Дыхание',
-        'лекции': '📺 Лекции',
-        'практики': '✨ Практики',
-        'мотивация': '⚡ Мотивация'
-    };
-    return names[category] || category;
-}
-
-// НАСТРОЙКА ФИЛЬТРОВ
-function setupFilters() {
-    // Фильтры для статей
-    document.querySelectorAll('[data-filter]').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            displayArticles(this.dataset.filter);
-        });
-    });
+// СОЗДАЕМ МОДАЛЬНОЕ ОКНО
+function создатьМодалку() {
+    console.log('Создаем модальное окно');
     
-    // Фильтры для видео
-    document.querySelectorAll('[data-filter-video]').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('[data-filter-video]').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            displayVideos(this.dataset.filterVideo);
-        });
-    });
-}
-
-// НАСТРОЙКА ТЕМЫ
-function setupThemeToggle() {
-    const btn = document.getElementById('theme-toggle');
-    if (!btn) return;
+    // Удаляем старую модалку если есть
+    const старая = document.getElementById('модалка');
+    if (старая) старая.remove();
     
-    const savedTheme = localStorage.getItem('theme') || 'light-theme';
-    document.body.className = savedTheme;
-    
-    btn.addEventListener('click', function() {
-        if (document.body.classList.contains('light-theme')) {
-            document.body.className = 'dark-theme';
-            localStorage.setItem('theme', 'dark-theme');
-        } else {
-            document.body.className = 'light-theme';
-            localStorage.setItem('theme', 'light-theme');
-        }
-    });
-}
-
-// ПЛАВНЫЙ СКРОЛЛ
-function setupSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
-}
-
-// Добавляем стили для модального окна, если их нет
-const style = document.createElement('style');
-style.textContent = `
-    .modal {
+    // Создаем новую
+    const модалка = document.createElement('div');
+    модалка.id = 'модалка';
+    модалка.style.cssText = `
         display: none;
         position: fixed;
         top: 0;
@@ -350,120 +92,390 @@ style.textContent = `
         width: 100%;
         height: 100%;
         background: rgba(0,0,0,0.8);
-        z-index: 10000;
+        z-index: 999999;
         align-items: center;
         justify-content: center;
-    }
+    `;
     
-    .modal-content {
-        background: var(--card-bg);
-        width: 90%;
-        max-width: 800px;
-        max-height: 90vh;
-        border-radius: 24px;
-        overflow: hidden;
-    }
+    модалка.innerHTML = `
+        <div style="
+            background: white;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        ">
+            <div style="
+                padding: 20px 30px;
+                background: #f5f5f5;
+                border-bottom: 1px solid #ddd;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            ">
+                <h2 id="модалкаЗаголовок" style="margin:0; color:#333;"></h2>
+                <button id="закрытьМодалку" style="
+                    background: none;
+                    border: none;
+                    font-size: 30px;
+                    cursor: pointer;
+                    color: #666;
+                    width: 40px;
+                    height: 40px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                ">×</button>
+            </div>
+            <div id="модалкаКонтент" style="
+                padding: 30px;
+                overflow-y: auto;
+                max-height: calc(90vh - 80px);
+                background: white;
+                color: #333;
+            "></div>
+        </div>
+    `;
     
-    .modal-header {
-        padding: 20px 30px;
-        background: var(--bg-secondary);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid var(--border-color);
-    }
+    document.body.appendChild(модалка);
     
-    .modal-header h2 {
-        margin: 0;
-        color: var(--text-primary);
-    }
+    // Кнопка закрытия
+    document.getElementById('закрытьМодалку').onclick = function() {
+        document.getElementById('модалка').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    };
     
-    .modal-close {
-        background: none;
-        border: none;
-        font-size: 2rem;
-        cursor: pointer;
-        color: var(--text-secondary);
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-    }
+    // Закрытие по клику вне окна
+    модалка.onclick = function(e) {
+        if (e.target === модалка) {
+            модалка.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    };
     
-    .modal-close:hover {
-        background: var(--bg-primary);
-        color: var(--primary);
-    }
+    // Закрытие по Escape
+    document.onkeydown = function(e) {
+        if (e.key === 'Escape') {
+            const мод = document.getElementById('модалка');
+            if (мод.style.display === 'flex') {
+                мод.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    };
     
-    .modal-body {
-        padding: 30px;
-        overflow-y: auto;
-        max-height: calc(90vh - 80px);
-        color: var(--text-primary);
-    }
-    
-    .video-wrapper {
-        position: relative;
-        padding-bottom: 56.25%;
-        height: 0;
-        overflow: hidden;
-        border-radius: 12px;
-    }
-    
-    .video-wrapper iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-    
-    .read-more-btn, .watch-btn {
-        background: none;
-        border: none;
-        color: var(--primary);
-        font-weight: 600;
-        cursor: pointer;
-        padding: 0;
-        font-size: 0.9rem;
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-    }
-    
-    .read-more-btn:hover, .watch-btn:hover {
-        gap: 10px;
-    }
-    
-    .play-button {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 60px;
-        height: 60px;
-        background: rgba(108,92,231,0.9);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 1.5rem;
-        opacity: 0;
-        transition: 0.3s;
-        border: 2px solid white;
-    }
-    
-    .video-card:hover .play-button {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1.1);
-    }
-    
-    .article-card, .video-card {
-        cursor: pointer;
-    }
-`;
+    console.log('Модальное окно создано');
+}
 
-document.head.appendChild(style);
+// ПОКАЗАТЬ СТАТЬИ
+function показатьСтатьи(фильтр) {
+    console.log('Показываем статьи, фильтр:', фильтр);
+    
+    const контейнер = document.getElementById('articles-container');
+    if (!контейнер) {
+        console.log('Контейнер для статей не найден!');
+        return;
+    }
+    
+    let отфильтрованные = [];
+    if (фильтр === 'all') {
+        отфильтрованные = статьи;
+    } else {
+        отфильтрованные = статьи.filter(s => s.category === фильтр);
+    }
+    
+    if (отфильтрованные.length === 0) {
+        контейнер.innerHTML = '<div style="text-align:center; padding:40px;">Нет статей</div>';
+        return;
+    }
+    
+    let html = '';
+    отфильтрованные.forEach(статья => {
+        html += `
+            <div class="статья-карточка" data-id="${статья.id}" style="
+                background: var(--card-bg);
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: var(--shadow);
+                cursor: pointer;
+                margin-bottom: 20px;
+            ">
+                <div style="height:200px; background-image:url('${статья.image}'); background-size:cover; background-position:center; position:relative;">
+                    <span style="position:absolute; top:15px; left:15px; background:white; padding:5px 15px; border-radius:20px; font-size:14px; color:#6c5ce7;">${статья.category}</span>
+                </div>
+                <div style="padding:20px;">
+                    <h3 style="margin:0 0 10px; color:var(--text-primary);">${статья.title}</h3>
+                    <div style="display:flex; gap:15px; color:var(--text-secondary); font-size:14px; margin-bottom:10px;">
+                        <span><i class="far fa-clock"></i> ${статья.readTime}</span>
+                        <span><i class="far fa-calendar"></i> ${статья.date}</span>
+                    </div>
+                    <p style="color:var(--text-secondary); margin-bottom:15px;">${статья.excerpt}</p>
+                    <button class="читать-кнопка" data-id="${статья.id}" style="
+                        background: none;
+                        border: none;
+                        color: #6c5ce7;
+                        font-weight: 600;
+                        cursor: pointer;
+                        padding: 0;
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 5px;
+                    ">Читать статью <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        `;
+    });
+    
+    контейнер.innerHTML = html;
+    
+    // Добавляем обработчики на кнопки
+    document.querySelectorAll('.читать-кнопка').forEach(кнопка => {
+        кнопка.onclick = function(e) {
+            e.stopPropagation();
+            const id = this.dataset.id;
+            открытьСтатью(parseInt(id));
+        };
+    });
+    
+    // Добавляем обработчики на карточки
+    document.querySelectorAll('.статья-карточка').forEach(карточка => {
+        карточка.onclick = function(e) {
+            if (!e.target.closest('.читать-кнопка')) {
+                const id = this.dataset.id;
+                открытьСтатью(parseInt(id));
+            }
+        };
+    });
+}
+
+// ПОКАЗАТЬ ВИДЕО
+function показатьВидео(фильтр) {
+    console.log('Показываем видео, фильтр:', фильтр);
+    
+    const контейнер = document.getElementById('videos-container');
+    if (!контейнер) {
+        console.log('Контейнер для видео не найден!');
+        return;
+    }
+    
+    let отфильтрованные = [];
+    if (фильтр === 'all') {
+        отфильтрованные = видео;
+    } else {
+        отфильтрованные = видео.filter(v => v.category === фильтр);
+    }
+    
+    if (отфильтрованные.length === 0) {
+        контейнер.innerHTML = '<div style="text-align:center; padding:40px;">Нет видео</div>';
+        return;
+    }
+    
+    let html = '';
+    отфильтрованные.forEach(видео => {
+        html += `
+            <div class="видео-карточка" data-id="${видео.id}" style="
+                background: var(--card-bg);
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: var(--shadow);
+                cursor: pointer;
+                margin-bottom: 20px;
+            ">
+                <div style="height:200px; background-image:url('${видео.thumbnail}'); background-size:cover; background-position:center; position:relative;">
+                    <span style="position:absolute; top:15px; left:15px; background:white; padding:5px 15px; border-radius:20px; font-size:14px; color:#6c5ce7;">${видео.category}</span>
+                    <span style="position:absolute; bottom:15px; right:15px; background:rgba(0,0,0,0.8); color:white; padding:4px 8px; border-radius:4px;">${видео.duration}</span>
+                    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:60px; height:60px; background:#6c5ce7; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:24px; opacity:0; transition:0.3s; border:2px solid white;" class="play-кнопка">▶</div>
+                </div>
+                <div style="padding:20px;">
+                    <h3 style="margin:0 0 10px; color:var(--text-primary);">${видео.title}</h3>
+                    <div style="color:var(--text-secondary); font-size:14px; margin-bottom:10px;">
+                        <span><i class="far fa-eye"></i> ${видео.views} просмотров</span>
+                    </div>
+                    <p style="color:var(--text-secondary); margin-bottom:15px;">${видео.description}</p>
+                    <button class="смотреть-кнопка" data-youtube="${видео.youtubeId}" style="
+                        background: none;
+                        border: none;
+                        color: #6c5ce7;
+                        font-weight: 600;
+                        cursor: pointer;
+                        padding: 0;
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 5px;
+                    ">Смотреть видео <i class="fas fa-play"></i></button>
+                </div>
+            </div>
+        `;
+    });
+    
+    контейнер.innerHTML = html;
+    
+    // Добавляем эффект для кнопки play
+    document.querySelectorAll('.видео-карточка').forEach(карточка => {
+        карточка.onmouseenter = function() {
+            this.querySelector('.play-кнопка').style.opacity = '1';
+        };
+        карточка.onmouseleave = function() {
+            this.querySelector('.play-кнопка').style.opacity = '0';
+        };
+    });
+    
+    // Добавляем обработчики на кнопки
+    document.querySelectorAll('.смотреть-кнопка').forEach(кнопка => {
+        кнопка.onclick = function(e) {
+            e.stopPropagation();
+            const youtubeId = this.dataset.youtube;
+            const заголовок = this.closest('.видео-карточка').querySelector('h3').textContent;
+            открытьВидео(youtubeId, заголовок);
+        };
+    });
+    
+    // Добавляем обработчики на карточки
+    document.querySelectorAll('.видео-карточка').forEach(карточка => {
+        карточка.onclick = function(e) {
+            if (!e.target.closest('.смотреть-кнопка')) {
+                const youtubeId = this.querySelector('.смотреть-кнопка').dataset.youtube;
+                const заголовок = this.querySelector('h3').textContent;
+                открытьВидео(youtubeId, заголовок);
+            }
+        };
+    });
+}
+
+// ОТКРЫТЬ СТАТЬЮ
+function открытьСтатью(id) {
+    console.log('Открываем статью:', id);
+    
+    const статья = статьи.find(s => s.id === id);
+    if (!статья) return;
+    
+    let контент = `
+        <div style="line-height:1.8;">
+            <img src="${статья.image}" alt="${статья.title}" style="width:100%; border-radius:12px; margin-bottom:20px;">
+            <h2 style="color:#6c5ce7; margin-bottom:20px;">${статья.title}</h2>
+            <p style="margin-bottom:20px; font-size:18px;"><strong>${статья.excerpt}</strong></p>
+    `;
+    
+    // Добавляем разный контент для разных статей
+    if (id === 1) {
+        контент += `
+            <h3>1. Дыхание по квадрату</h3>
+            <p>Вдох (4 сек) - задержка (4 сек) - выдох (4 сек) - задержка (4 сек). Повторить 5 раз.</p>
+            
+            <h3>2. Заземление 5-4-3-2-1</h3>
+            <p>Найдите 5 вещей, которые видите, 4 - можете потрогать, 3 - слышите, 2 - можете понюхать, 1 - можете попробовать.</p>
+            
+            <h3>3. Мышечная релаксация</h3>
+            <p>Напрягите все мышцы на 5 секунд, затем расслабьте. Повторите 3 раза.</p>
+        `;
+    } else if (id === 2) {
+        контент += `
+            <h3>1. Просыпайтесь без телефона</h3>
+            <p>Первые 30 минут не берите телефон - дайте мозгу проснуться.</p>
+            
+            <h3>2. Стакан воды</h3>
+            <p>Вода с лимоном запускает метаболизм.</p>
+            
+            <h3>3. Легкая зарядка</h3>
+            <p>5-10 минут растяжки разбудят тело.</p>
+        `;
+    } else if (id === 10) {
+        контент += `
+            <h3>Что такое синдром самозванца?</h3>
+            <p>Это когда человек не верит в свои успехи и боится, что все узнают, что он "самозванец".</p>
+            
+            <h3>Как справиться:</h3>
+            <ul style="margin-left:20px;">
+                <li>Ведите дневник успехов</li>
+                <li>Разрешите себе ошибаться</li>
+                <li>Перестаньте сравнивать себя с другими</li>
+                <li>Принимайте комплименты</li>
+            </ul>
+        `;
+    } else {
+        контент += `<p>Полный текст статьи готовится к публикации. Загляните позже!</p>`;
+    }
+    
+    контент += `</div>`;
+    
+    // Показываем в модалке
+    document.getElementById('модалкаЗаголовок').textContent = статья.title;
+    document.getElementById('модалкаКонтент').innerHTML = контент;
+    document.getElementById('модалка').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+// ОТКРЫТЬ ВИДЕО
+function открытьВидео(youtubeId, заголовок) {
+    console.log('Открываем видео:', youtubeId);
+    
+    const контент = `
+        <div>
+            <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:12px; margin-bottom:20px;">
+                <iframe 
+                    src="https://www.youtube.com/embed/${youtubeId}?autoplay=1" 
+                    style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <h3 style="margin-bottom:10px;">${заголовок}</h3>
+            <p>🎬 Приятного просмотра!</p>
+        </div>
+    `;
+    
+    document.getElementById('модалкаЗаголовок').textContent = заголовок;
+    document.getElementById('модалкаКонтент').innerHTML = контент;
+    document.getElementById('модалка').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+// НАСТРОИТЬ КНОПКИ
+function настроитьКнопки() {
+    console.log('Настраиваем кнопки фильтров');
+    
+    // Фильтры для статей
+    document.querySelectorAll('[data-filter]').forEach(кнопка => {
+        кнопка.onclick = function() {
+            document.querySelectorAll('[data-filter]').forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            показатьСтатьи(this.dataset.filter);
+        };
+    });
+    
+    // Фильтры для видео
+    document.querySelectorAll('[data-filter-video]').forEach(кнопка => {
+        кнопка.onclick = function() {
+            document.querySelectorAll('[data-filter-video]').forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            показатьВидео(this.dataset.filterVideo);
+        };
+    });
+    
+    // Переключение темы
+    const тоггл = document.getElementById('theme-toggle');
+    if (тоггл) {
+        тоггл.onclick = function() {
+            if (document.body.classList.contains('light-theme')) {
+                document.body.className = 'dark-theme';
+                localStorage.setItem('theme', 'dark-theme');
+            } else {
+                document.body.className = 'light-theme';
+                localStorage.setItem('theme', 'light-theme');
+            }
+        };
+    }
+    
+    // Плавный скролл
+    document.querySelectorAll('a[href^="#"]').forEach(ссылка => {
+        ссылка.onclick = function(e) {
+            e.preventDefault();
+            const цель = document.querySelector(this.getAttribute('href'));
+            if (цель) цель.scrollIntoView({ behavior: 'smooth' });
+        };
+    });
+}
+
+console.log('Скрипт готов к работе!');
