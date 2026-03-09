@@ -12,35 +12,19 @@
         }
 
         :root {
-            --bg: #f8f6ff;
-            --surface: rgba(255, 255, 255, 0.8);
+            --bg: #ffffff;
+            --surface: rgba(255, 255, 255, 0.9);
             --surface-solid: #ffffff;
-            --text-primary: #1a1f35;
-            --text-secondary: #4a4e6b;
-            --accent-light: #a5b9ff;
-            --accent-lavender: #d1c0ff;
-            --accent-soft: #b8c5ff;
-            --border-light: #e8e2ff;
-            --shadow-sm: 0 10px 30px -10px rgba(79, 67, 133, 0.15);
-            --shadow-lg: 0 20px 40px -15px rgba(65, 48, 128, 0.2);
-            --card-bg: rgba(255, 255, 255, 0.7);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg: #13111c;
-                --surface: rgba(30, 26, 46, 0.8);
-                --surface-solid: #221f30;
-                --text-primary: #f0ecff;
-                --text-secondary: #b9b3d4;
-                --accent-light: #6d7ec7;
-                --accent-lavender: #7f68b0;
-                --accent-soft: #5d5390;
-                --border-light: #322d44;
-                --shadow-sm: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-                --shadow-lg: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
-                --card-bg: rgba(34, 29, 51, 0.7);
-            }
+            --text-primary: #1a2639;
+            --text-secondary: #3a4a6b;
+            --accent-light: #d0e2ff;
+            --accent-medium: #a3c6ff;
+            --accent-lavender: #b8d0ff;
+            --border-light: #e0ecff;
+            --shadow-sm: 0 5px 20px rgba(163, 198, 255, 0.15);
+            --shadow-lg: 0 15px 35px rgba(128, 166, 255, 0.2);
+            --card-bg: #ffffff;
+            --hover-bg: #f5faff;
         }
 
         body {
@@ -48,24 +32,22 @@
             background-color: var(--bg);
             color: var(--text-primary);
             line-height: 1.5;
-            transition: background-color 0.3s, color 0.2s;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             padding: 2rem 2rem 3rem;
         }
 
-        /* центрирование всего основного контента */
+        /* центрирование */
         .centered-content {
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
         }
 
-        /* навигация и шапка */
+        /* навигация */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -74,17 +56,24 @@
             margin-bottom: 4rem;
             flex-wrap: wrap;
             gap: 1.5rem;
+            background: white;
+            padding: 1rem 2rem;
+            border-radius: 80px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
         }
 
         .logo {
             font-size: 1.8rem;
             font-weight: 500;
-            background: var(--surface);
-            padding: 0.5rem 1.5rem;
-            border-radius: 60px;
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-light);
-            box-shadow: var(--shadow-sm);
+            color: #1e3a6b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo i {
+            color: #7ba5ff;
         }
 
         .nav-buttons {
@@ -96,11 +85,10 @@
             padding: 0.75rem 2rem;
             border-radius: 40px;
             border: 1px solid var(--border-light);
-            background: var(--surface);
+            background: white;
             color: var(--text-primary);
             text-decoration: none;
             font-weight: 500;
-            backdrop-filter: blur(8px);
             transition: 0.2s;
             cursor: pointer;
             display: inline-flex;
@@ -110,19 +98,18 @@
         }
 
         .btn-primary {
-            background: var(--accent-lavender);
-            color: #1a1730;
+            background: #d9e9ff;
+            color: #1e3a6b;
             border: none;
         }
 
         .btn:hover {
             transform: translateY(-2px);
+            background: #c3dbff;
             box-shadow: var(--shadow-lg);
-            background: var(--accent-soft);
-            color: white;
         }
 
-        /* Hero секция по центру */
+        /* Hero секция */
         .hero {
             text-align: center;
             margin-bottom: 5rem;
@@ -133,16 +120,14 @@
             font-size: 4rem;
             font-weight: 450;
             letter-spacing: -0.03em;
-            background: linear-gradient(135deg, #7f6aae, #6183d9);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #1e3a6b;
             margin-bottom: 1rem;
             line-height: 1.2;
         }
 
         .hero-text {
             font-size: 1.4rem;
-            color: var(--text-secondary);
+            color: #3a5a7a;
             margin-bottom: 2.5rem;
         }
 
@@ -153,7 +138,7 @@
             flex-wrap: wrap;
         }
 
-        /* сетка для о проекте */
+        /* сетка "О проекте" */
         .about-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -163,8 +148,7 @@
         }
 
         .about-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(8px);
+            background: white;
             border: 1px solid var(--border-light);
             border-radius: 2rem;
             padding: 2rem 1.5rem;
@@ -175,13 +159,14 @@
 
         .about-card:hover {
             transform: translateY(-5px);
-            background: var(--surface);
+            background: var(--hover-bg);
+            border-color: var(--accent-medium);
         }
 
         .about-emoji {
             font-size: 2.8rem;
             margin-bottom: 1rem;
-            background: var(--accent-lavender);
+            background: #e3efff;
             width: fit-content;
             margin-left: auto;
             margin-right: auto;
@@ -189,7 +174,7 @@
             border-radius: 60px;
         }
 
-        /* секции с контентом */
+        /* секции */
         .section {
             width: 100%;
             margin-bottom: 4rem;
@@ -203,6 +188,7 @@
             align-items: center;
             justify-content: center;
             gap: 1rem;
+            color: #1e3a6b;
         }
 
         .category-chips {
@@ -215,23 +201,22 @@
 
         .chip {
             padding: 0.6rem 1.5rem;
-            background: var(--surface);
+            background: white;
             border: 1px solid var(--border-light);
             border-radius: 40px;
             font-size: 1rem;
             color: var(--text-primary);
-            backdrop-filter: blur(4px);
             cursor: pointer;
             transition: 0.2s;
         }
 
         .chip:hover, .chip.active {
-            background: var(--accent-lavender);
-            color: #1a142f;
-            border-color: transparent;
+            background: #d9e9ff;
+            border-color: #a3c6ff;
+            color: #1e3a6b;
         }
 
-        /* карточки статей/видео — центрированные */
+        /* карточки */
         .cards-grid {
             display: flex;
             flex-wrap: wrap;
@@ -242,8 +227,7 @@
 
         .content-card {
             width: 280px;
-            background: var(--card-bg);
-            backdrop-filter: blur(8px);
+            background: white;
             border: 1px solid var(--border-light);
             border-radius: 2rem;
             padding: 1.8rem;
@@ -251,12 +235,15 @@
             transition: 0.25s;
             text-align: left;
             cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .content-card:hover {
             transform: translateY(-8px);
-            background: var(--surface);
-            border-color: var(--accent-light);
+            background: var(--hover-bg);
+            border-color: var(--accent-medium);
             box-shadow: var(--shadow-lg);
         }
 
@@ -264,38 +251,39 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: var(--accent-light);
+            color: #5f8fd9;
             margin-bottom: 0.5rem;
         }
 
         .card-title {
             font-size: 1.4rem;
-            font-weight: 450;
+            font-weight: 500;
             margin-bottom: 0.8rem;
             line-height: 1.3;
+            color: #1a2b44;
         }
 
         .card-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: var(--text-secondary);
+            color: #6b7f9f;
             font-size: 0.95rem;
             margin-top: 1rem;
         }
 
         .icon-play {
-            background: var(--accent-lavender);
+            background: #d9e9ff;
             border-radius: 50%;
             width: 38px;
             height: 38px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #1f1935;
+            color: #1e3a6b;
         }
 
-        /* модальное окно только для видео */
+        /* модальное окно для видео */
         .modal {
             display: none;
             position: fixed;
@@ -304,7 +292,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(8px);
             align-items: center;
             justify-content: center;
             z-index: 1000;
@@ -315,88 +303,87 @@
         }
 
         .modal-content {
-            background: var(--surface-solid);
-            max-width: 800px;
+            background: white;
+            max-width: 900px;
             width: 90%;
-            border-radius: 3rem;
-            padding: 2.5rem;
+            border-radius: 2.5rem;
+            padding: 2rem;
             border: 1px solid var(--border-light);
             box-shadow: var(--shadow-lg);
             text-align: center;
         }
 
         .modal-title {
-            font-size: 2rem;
-            font-weight: 450;
-            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: #1e3a6b;
         }
 
-        .video-player {
-            background: var(--bg);
-            border-radius: 2rem;
-            height: 350px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            border: 2px dashed var(--accent-light);
-            margin-bottom: 2rem;
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        .video-player i {
-            font-size: 5rem;
-            color: var(--accent-lavender);
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         .close-btn {
-            background: var(--accent-light);
+            background: #d9e9ff;
             border: none;
             border-radius: 3rem;
             padding: 1rem 3rem;
             font-size: 1.1rem;
             font-weight: 500;
             cursor: pointer;
-            color: #16112a;
+            color: #1e3a6b;
             transition: 0.2s;
         }
 
         .close-btn:hover {
-            background: var(--accent-lavender);
-            transform: scale(1.02);
+            background: #c3dbff;
         }
 
-        /* футер */
         .footer {
             margin-top: 5rem;
             padding: 2rem 0 1rem;
-            color: var(--text-secondary);
-            border-top: 1px dashed var(--border-light);
+            color: #6b7f9f;
+            border-top: 1px solid var(--border-light);
             text-align: center;
             width: 100%;
         }
 
-        /* скрытые категории */
-        .category-group {
+        /* скрытые категории для видео */
+        .video-card.hidden {
             display: none;
         }
 
-        .category-group.active-category {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
+        /* адаптивность */
+        @media (max-width: 900px) {
+            .about-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
-        /* для ссылок статьи выглядят как карточки, но ведут на url */
-        .article-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            width: 280px;
+        @media (max-width: 600px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 3rem;
+            }
         }
     </style>
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -422,7 +409,7 @@
             </div>
         </div>
 
-        <!-- О проекте (4 карточки) -->
+        <!-- О проекте -->
         <h2 class="section-title">🌿 О проекте CareCloud</h2>
         <div class="about-grid">
             <div class="about-card"><span class="about-emoji">🌿</span><h3>Для гармонии</h3><p>Статьи и видео для баланса</p></div>
@@ -431,11 +418,10 @@
             <div class="about-card"><span class="about-emoji">🤍</span><h3>С заботой о тебе</h3><p>Без регистраций и синхронизаций</p></div>
         </div>
 
-        <!-- Секция СТАТЬИ -->
+        <!-- Секция СТАТЬИ (реальные статьи) -->
         <div id="articles" class="section">
             <h2 class="section-title"><i class="fas fa-book-open"></i> Все статьи</h2>
             
-            <!-- Чипсы категорий для статей -->
             <div class="category-chips" id="articleChips">
                 <span class="chip active" data-category="all-articles">Все статьи</span>
                 <span class="chip" data-category="psychology-articles">🧠 Психология</span>
@@ -446,105 +432,347 @@
                 <span class="chip" data-category="habits-articles">⏰ Привычки</span>
             </div>
 
-            <!-- Контейнер для статей (каждая категория по 5 штук) -->
-            <div id="articlesContainer">
-                <!-- Все статьи (по умолчанию активно) -->
-                <div class="cards-grid category-group active-category" id="all-articles">
-                    <!-- Психология 5 шт (все статьи) -->
-                    <a href="https://example.com/psy1" target="_blank" class="article-link"><div class="content-card"><div class="card-category">🧠 Психология</div><div class="card-title">Исцеление внутреннего ребенка</div><div class="card-meta"><span>5 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/psy2" target="_blank" class="article-link"><div class="content-card"><div class="card-category">🧠 Психология</div><div class="card-title">Как понять свои чувства</div><div class="card-meta"><span>7 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/psy3" target="_blank" class="article-link"><div class="content-card"><div class="card-category">🧠 Психология</div><div class="card-title">Тревога и дыхание</div><div class="card-meta"><span>4 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/psy4" target="_blank" class="article-link"><div class="content-card"><div class="card-category">🧠 Психология</div><div class="card-title">Личные границы</div><div class="card-meta"><span>6 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/psy5" target="_blank" class="article-link"><div class="content-card"><div class="card-category">🧠 Психология</div><div class="card-title">Самосострадание</div><div class="card-meta"><span>5 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <!-- Саморазвитие 5 -->
-                    <a href="https://example.com/sd1" target="_blank" class="article-link"><div class="content-card"><div class="card-category">🌱 Саморазвитие</div><div class="card-title">Цели и привычки</div><div class="card-meta"><span>8 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/sd2" target="_blank" class="article-link"><div class="content-card"><div class="card-category">🌱 Саморазвитие</div><div class="card-title">Утренние ритуалы</div><div class="card-meta"><span>5 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/sd3" target="_blank" class="article-link"><div class="content-card"><div class="card-category">🌱 Саморазвитие</div><div class="card-title">Дневник благодарности</div><div class="card-meta"><span>6 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/sd4" target="_blank" class="article-link"><div class="content-card"><div class="card-category">🌱 Саморазвитие</div><div class="card-title">Иммунитет к критике</div><div class="card-meta"><span>7 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/sd5" target="_blank" class="article-link"><div class="content-card"><div class="card-category">🌱 Саморазвитие</div><div class="card-title">Поток и творчество</div><div class="card-meta"><span>9 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <!-- Здоровье 5 -->
-                    <a href="https://example.com/health1" target="_blank" class="article-link"><div class="content-card"><div class="card-category">💪 Здоровье</div><div class="card-title">Нервная система</div><div class="card-meta"><span>6 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/health2" target="_blank" class="article-link"><div class="content-card"><div class="card-category">💪 Здоровье</div><div class="card-title">Здоровый сон</div><div class="card-meta"><span>5 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/health3" target="_blank" class="article-link"><div class="content-card"><div class="card-category">💪 Здоровье</div><div class="card-title">Питание и настроение</div><div class="card-meta"><span>7 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/health4" target="_blank" class="article-link"><div class="content-card"><div class="card-category">💪 Здоровье</div><div class="card-title">Гормональный фон</div><div class="card-meta"><span>8 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/health5" target="_blank" class="article-link"><div class="content-card"><div class="card-category">💪 Здоровье</div><div class="card-title">Ходьба и энергия</div><div class="card-meta"><span>4 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <!-- Осознанность 5 -->
-                    <a href="https://example.com/mind1" target="_blank" class="article-link"><div class="content-card"><div class="card-category">🧘 Осознанность</div><div class="card-title">Настоящий момент</div><div class="card-meta"><span>5 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/mind2" target="_blank" class="article-link"><div class="content-card"><div class="card-category">🧘 Осознанность</div><div class="card-title">Медитация в городе</div><div class="card-meta"><span>3 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/mind3" target="_blank" class="article-link"><div class="content-card"><div class="card-category">🧘 Осознанность</div><div class="card-title">Сканирование тела</div><div class="card-meta"><span>10 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/mind4" target="_blank" class="article-link"><div class="content-card"><div class="card-category">🧘 Осознанность</div><div class="card-title">Осознанное питание</div><div class="card-meta"><span>7 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/mind5" target="_blank" class="article-link"><div class="content-card"><div class="card-category">🧘 Осознанность</div><div class="card-title">Эмоции и тело</div><div class="card-meta"><span>6 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <!-- Отношения 5 -->
-                    <a href="https://example.com/rel1" target="_blank" class="article-link"><div class="content-card"><div class="card-category">🤝 Отношения</div><div class="card-title">Эмпатия в общении</div><div class="card-meta"><span>7 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/rel2" target="_blank" class="article-link"><div class="content-card"><div class="card-category">🤝 Отношения</div><div class="card-title">Экологичные конфликты</div><div class="card-meta"><span>8 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/rel3" target="_blank" class="article-link"><div class="content-card"><div class="card-category">🤝 Отношения</div><div class="card-title">Я-сообщения</div><div class="card-meta"><span>5 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/rel4" target="_blank" class="article-link"><div class="content-card"><div class="card-category">🤝 Отношения</div><div class="card-title">Дружба во взрослом</div><div class="card-meta"><span>7 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/rel5" target="_blank" class="article-link"><div class="content-card"><div class="card-category">🤝 Отношения</div><div class="card-title">Семейные сценарии</div><div class="card-meta"><span>9 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <!-- Привычки 5 -->
-                    <a href="https://example.com/hab1" target="_blank" class="article-link"><div class="content-card"><div class="card-category">⏰ Привычки</div><div class="card-title">Маленькие шаги</div><div class="card-meta"><span>6 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/hab2" target="_blank" class="article-link"><div class="content-card"><div class="card-category">⏰ Привычки</div><div class="card-title">Отслеживание привычек</div><div class="card-meta"><span>4 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/hab3" target="_blank" class="article-link"><div class="content-card"><div class="card-category">⏰ Привычки</div><div class="card-title">Где брать силу воли</div><div class="card-meta"><span>7 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/hab4" target="_blank" class="article-link"><div class="content-card"><div class="card-category">⏰ Привычки</div><div class="card-title">Утренний старт</div><div class="card-meta"><span>5 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                    <a href="https://example.com/hab5" target="_blank" class="article-link"><div class="content-card"><div class="card-category">⏰ Привычки</div><div class="card-title">Вечерний дауншифт</div><div class="card-meta"><span>6 мин чтения</span><i class="fas fa-arrow-right"></i></div></div></a>
-                </div>
+            <div class="cards-grid" id="articlesGrid">
+                <!-- Психология (реальные статьи Wikipedia) -->
+                <a href="https://ru.wikipedia.org/wiki/Психология_бессознательного" target="_blank" class="content-card" data-category="psychology-articles">
+                    <div class="card-category">🧠 Психология</div>
+                    <div class="card-title">Психология бессознательного</div>
+                    <div class="card-meta"><span>теория Фрейда</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Когнитивная_психология" target="_blank" class="content-card" data-category="psychology-articles">
+                    <div class="card-category">🧠 Психология</div>
+                    <div class="card-title">Когнитивная психология</div>
+                    <div class="card-meta"><span>мышление и память</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Психология_личности" target="_blank" class="content-card" data-category="psychology-articles">
+                    <div class="card-category">🧠 Психология</div>
+                    <div class="card-title">Психология личности</div>
+                    <div class="card-meta"><span>теории личности</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Социальная_психология" target="_blank" class="content-card" data-category="psychology-articles">
+                    <div class="card-category">🧠 Психология</div>
+                    <div class="card-title">Социальная психология</div>
+                    <div class="card-meta"><span>поведение в группе</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Психология_развития" target="_blank" class="content-card" data-category="psychology-articles">
+                    <div class="card-category">🧠 Психология</div>
+                    <div class="card-title">Психология развития</div>
+                    <div class="card-meta"><span>взросление и возраст</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
 
-                <!-- Отдельные скрытые категории (для фильтрации) - такой же контент, но для корректного показа будем дублировать группы -->
-                <!-- Но проще через JS показывать нужные, скрывая все. Сделаем через data атрибуты. Оставим всё в одном контейнере, а JS будет фильтровать по data-категории -->
+                <!-- Саморазвитие -->
+                <a href="https://ru.wikipedia.org/wiki/Саморазвитие" target="_blank" class="content-card" data-category="selfdev-articles">
+                    <div class="card-category">🌱 Саморазвитие</div>
+                    <div class="card-title">Саморазвитие</div>
+                    <div class="card-meta"><span>что это и зачем</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Тайм-менеджмент" target="_blank" class="content-card" data-category="selfdev-articles">
+                    <div class="card-category">🌱 Саморазвитие</div>
+                    <div class="card-title">Тайм-менеджмент</div>
+                    <div class="card-meta"><span>управление временем</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Критическое_мышление" target="_blank" class="content-card" data-category="selfdev-articles">
+                    <div class="card-category">🌱 Саморазвитие</div>
+                    <div class="card-title">Критическое мышление</div>
+                    <div class="card-meta"><span>как анализировать</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Эмоциональный_интеллект" target="_blank" class="content-card" data-category="selfdev-articles">
+                    <div class="card-category">🌱 Саморазвитие</div>
+                    <div class="card-title">Эмоциональный интеллект</div>
+                    <div class="card-meta"><span>понимание эмоций</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Мотивация" target="_blank" class="content-card" data-category="selfdev-articles">
+                    <div class="card-category">🌱 Саморазвитие</div>
+                    <div class="card-title">Мотивация</div>
+                    <div class="card-meta"><span>как найти силы</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+
+                <!-- Здоровье -->
+                <a href="https://ru.wikipedia.org/wiki/Здоровый_образ_жизни" target="_blank" class="content-card" data-category="health-articles">
+                    <div class="card-category">💪 Здоровье</div>
+                    <div class="card-title">Здоровый образ жизни</div>
+                    <div class="card-meta"><span>основы ЗОЖ</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Правильное_питание" target="_blank" class="content-card" data-category="health-articles">
+                    <div class="card-category">💪 Здоровье</div>
+                    <div class="card-title">Правильное питание</div>
+                    <div class="card-meta"><span>рацион и здоровье</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Физическая_активность" target="_blank" class="content-card" data-category="health-articles">
+                    <div class="card-category">💪 Здоровье</div>
+                    <div class="card-title">Физическая активность</div>
+                    <div class="card-meta"><span>спорт и здоровье</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Сон" target="_blank" class="content-card" data-category="health-articles">
+                    <div class="card-category">💪 Здоровье</div>
+                    <div class="card-title">Здоровый сон</div>
+                    <div class="card-meta"><span>гигиена сна</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Стресс" target="_blank" class="content-card" data-category="health-articles">
+                    <div class="card-category">💪 Здоровье</div>
+                    <div class="card-title">Управление стрессом</div>
+                    <div class="card-meta"><span>как справляться</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+
+                <!-- Осознанность -->
+                <a href="https://ru.wikipedia.org/wiki/Осознанность" target="_blank" class="content-card" data-category="mindfulness-articles">
+                    <div class="card-category">🧘 Осознанность</div>
+                    <div class="card-title">Осознанность</div>
+                    <div class="card-meta"><span>что такое mindfulness</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Медитация" target="_blank" class="content-card" data-category="mindfulness-articles">
+                    <div class="card-category">🧘 Осознанность</div>
+                    <div class="card-title">Медитация</div>
+                    <div class="card-meta"><span>практика тишины</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Внимательность" target="_blank" class="content-card" data-category="mindfulness-articles">
+                    <div class="card-category">🧘 Осознанность</div>
+                    <div class="card-title">Внимательность</div>
+                    <div class="card-meta"><span>здесь и сейчас</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Йога" target="_blank" class="content-card" data-category="mindfulness-articles">
+                    <div class="card-category">🧘 Осознанность</div>
+                    <div class="card-title">Йога</div>
+                    <div class="card-meta"><span>тело и разум</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Дзэн" target="_blank" class="content-card" data-category="mindfulness-articles">
+                    <div class="card-category">🧘 Осознанность</div>
+                    <div class="card-title">Дзэн</div>
+                    <div class="card-meta"><span>философия практики</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+
+                <!-- Отношения -->
+                <a href="https://ru.wikipedia.org/wiki/Психология_отношений" target="_blank" class="content-card" data-category="relations-articles">
+                    <div class="card-category">🤝 Отношения</div>
+                    <div class="card-title">Психология отношений</div>
+                    <div class="card-meta"><span>как строить связь</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Эмпатия" target="_blank" class="content-card" data-category="relations-articles">
+                    <div class="card-category">🤝 Отношения</div>
+                    <div class="card-title">Эмпатия</div>
+                    <div class="card-meta"><span>понимание других</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Коммуникация" target="_blank" class="content-card" data-category="relations-articles">
+                    <div class="card-category">🤝 Отношения</div>
+                    <div class="card-title">Эффективная коммуникация</div>
+                    <div class="card-meta"><span>как общаться</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Дружба" target="_blank" class="content-card" data-category="relations-articles">
+                    <div class="card-category">🤝 Отношения</div>
+                    <div class="card-title">Психология дружбы</div>
+                    <div class="card-meta"><span>близкие отношения</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Семейная_психология" target="_blank" class="content-card" data-category="relations-articles">
+                    <div class="card-category">🤝 Отношения</div>
+                    <div class="card-title">Семейная психология</div>
+                    <div class="card-meta"><span>отношения в паре</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+
+                <!-- Привычки -->
+                <a href="https://ru.wikipedia.org/wiki/Привычка" target="_blank" class="content-card" data-category="habits-articles">
+                    <div class="card-category">⏰ Привычки</div>
+                    <div class="card-title">Привычка</div>
+                    <div class="card-meta"><span>формирование</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Прокрастинация" target="_blank" class="content-card" data-category="habits-articles">
+                    <div class="card-category">⏰ Привычки</div>
+                    <div class="card-title">Прокрастинация</div>
+                    <div class="card-meta"><span>как перестать</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Дисциплина" target="_blank" class="content-card" data-category="habits-articles">
+                    <div class="card-category">⏰ Привычки</div>
+                    <div class="card-title">Самодисциплина</div>
+                    <div class="card-meta"><span>сила воли</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Целеполагание" target="_blank" class="content-card" data-category="habits-articles">
+                    <div class="card-category">⏰ Привычки</div>
+                    <div class="card-title">Целеполагание</div>
+                    <div class="card-meta"><span>как ставить цели</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
+                <a href="https://ru.wikipedia.org/wiki/Планирование" target="_blank" class="content-card" data-category="habits-articles">
+                    <div class="card-category">⏰ Привычки</div>
+                    <div class="card-title">Планирование дня</div>
+                    <div class="card-meta"><span>эффективность</span><i class="fas fa-external-link-alt"></i></div>
+                </a>
             </div>
         </div>
 
-        <!-- Секция ВИДЕО (аналогично, но карточки ведут к модальному окну) -->
+        <!-- Секция ВИДЕО (с YouTube плеером) -->
         <div id="videos" class="section">
             <h2 class="section-title"><i class="fas fa-video"></i> Все видео</h2>
             
             <div class="category-chips" id="videoChips">
-                <span class="chip active" data-video="all-videos">Все видео</span>
-                <span class="chip" data-video="meditation-videos">🧘 Медитации</span>
-                <span class="chip" data-video="yoga-videos">🧘‍♀️ Йога</span>
-                <span class="chip" data-video="breath-videos">🌬️ Дыхание</span>
-                <span class="chip" data-video="lecture-videos">📺 Лекции</span>
-                <span class="chip" data-video="practice-videos">✨ Практики</span>
-                <span class="chip" data-video="psychology-videos">🧠 Психология</span>
+                <span class="chip active" data-category="all-videos">Все видео</span>
+                <span class="chip" data-category="meditation">🧘 Медитации</span>
+                <span class="chip" data-category="yoga">🧘‍♀️ Йога</span>
+                <span class="chip" data-category="breathing">🌬️ Дыхание</span>
+                <span class="chip" data-category="lectures">📺 Лекции</span>
+                <span class="chip" data-category="practices">✨ Практики</span>
+                <span class="chip" data-category="psychology-videos">🧠 Психология</span>
             </div>
 
             <div class="cards-grid" id="videosGrid">
-                <!-- Всего 35 видео, по 5 в каждой из 7 категорий. Для краткости покажем по 1-2 представителя, но идеологически — 5. В реальном проекте выведите циклом. Я сгенерирую по 5 через JS-подобное мышление, но в статике просто пропишу несколько, главное — работа модального окна. -->
-                <!-- Медитации 5 шт -->
-                <div class="content-card video-card" data-video-cat="meditation-videos" onclick="openVideoModal('Медитация: 10 минут тишины')"><div class="card-category">🧘 Медитации</div><div class="card-title">10 минут тишины</div><div class="card-meta"><span>10 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="meditation-videos" onclick="openVideoModal('Медитация: Метта (любящая доброта)')"><div class="card-category">🧘 Медитации</div><div class="card-title">Метта-медитация</div><div class="card-meta"><span>12 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="meditation-videos" onclick="openVideoModal('Медитация: Сканирование тела')"><div class="card-category">🧘 Медитации</div><div class="card-title">Сканирование тела</div><div class="card-meta"><span>15 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="meditation-videos" onclick="openVideoModal('Медитация: Осознанность для сна')"><div class="card-category">🧘 Медитации</div><div class="card-title">Для глубокого сна</div><div class="card-meta"><span>20 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="meditation-videos" onclick="openVideoModal('Медитация: Утренняя благодарность')"><div class="card-category">🧘 Медитации</div><div class="card-title">Утренняя благодарность</div><div class="card-meta"><span>7 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <!-- йога 5 -->
-                <div class="content-card video-card" data-video-cat="yoga-videos" onclick="openVideoModal('Йога: Утро с кошкой')"><div class="card-category">🧘‍♀️ Йога</div><div class="card-title">Утро с кошкой</div><div class="card-meta"><span>12 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="yoga-videos" onclick="openVideoModal('Йога: Расслабление спины')"><div class="card-category">🧘‍♀️ Йога</div><div class="card-title">Расслабление спины</div><div class="card-meta"><span>15 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="yoga-videos" onclick="openVideoModal('Йога: Балансы и фокус')"><div class="card-category">🧘‍♀️ Йога</div><div class="card-title">Балансы и фокус</div><div class="card-meta"><span>10 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="yoga-videos" onclick="openVideoModal('Йога: Вечерний стретч')"><div class="card-category">🧘‍♀️ Йога</div><div class="card-title">Вечерний стретч</div><div class="card-meta"><span>14 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="yoga-videos" onclick="openVideoModal('Йога: Энергия и дыхание')"><div class="card-category">🧘‍♀️ Йога</div><div class="card-title">Энергия и дыхание</div><div class="card-meta"><span>11 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <!-- дыхание 5 -->
-                <div class="content-card video-card" data-video-cat="breath-videos" onclick="openVideoModal('Дыхание: 4‑7‑8 для сна')"><div class="card-category">🌬️ Дыхание</div><div class="card-title">4‑7‑8 для сна</div><div class="card-meta"><span>5 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="breath-videos" onclick="openVideoModal('Дыхание: Бокс‑дыхание')"><div class="card-category">🌬️ Дыхание</div><div class="card-title">Бокс‑дыхание</div><div class="card-meta"><span>6 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="breath-videos" onclick="openVideoModal('Дыхание: Нади шодхана')"><div class="card-category">🌬️ Дыхание</div><div class="card-title">Нади шодхана</div><div class="card-meta"><span>8 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="breath-videos" onclick="openVideoModal('Дыхание: Капалабхати')"><div class="card-category">🌬️ Дыхание</div><div class="card-title">Капалабхати</div><div class="card-meta"><span>5 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="breath-videos" onclick="openVideoModal('Дыхание: Завершение дня')"><div class="card-category">🌬️ Дыхание</div><div class="card-title">Завершение дня</div><div class="card-meta"><span>8 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <!-- лекции 5 -->
-                <div class="content-card video-card" data-video-cat="lecture-videos" onclick="openVideoModal('Лекция: Нейробиология стресса')"><div class="card-category">📺 Лекции</div><div class="card-title">Нейробиология стресса</div><div class="card-meta"><span>25 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="lecture-videos" onclick="openVideoModal('Лекция: Привычки счастья')"><div class="card-category">📺 Лекции</div><div class="card-title">Привычки счастья</div><div class="card-meta"><span>18 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="lecture-videos" onclick="openVideoModal('Лекция: Психосоматика')"><div class="card-category">📺 Лекции</div><div class="card-title">Психосоматика</div><div class="card-meta"><span>30 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="lecture-videos" onclick="openVideoModal('Лекция: Самооценка')"><div class="card-category">📺 Лекции</div><div class="card-title">Самооценка</div><div class="card-meta"><span>22 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="lecture-videos" onclick="openVideoModal('Лекция: Мотивация')"><div class="card-category">📺 Лекции</div><div class="card-title">Мотивация</div><div class="card-meta"><span>20 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <!-- практики 5 -->
-                <div class="content-card video-card" data-video-cat="practice-videos" onclick="openVideoModal('Практика: Заземление')"><div class="card-category">✨ Практики</div><div class="card-title">Заземление</div><div class="card-meta"><span>8 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="practice-videos" onclick="openVideoModal('Практика: Антистресс')"><div class="card-category">✨ Практики</div><div class="card-title">Антистресс</div><div class="card-meta"><span>5 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="practice-videos" onclick="openVideoModal('Практика: Благодарность')"><div class="card-category">✨ Практики</div><div class="card-title">Благодарность</div><div class="card-meta"><span>7 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="practice-videos" onclick="openVideoModal('Практика: Творческая пауза')"><div class="card-category">✨ Практики</div><div class="card-title">Творческая пауза</div><div class="card-meta"><span>6 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="practice-videos" onclick="openVideoModal('Практика: Вечерний дневник')"><div class="card-category">✨ Практики</div><div class="card-title">Вечерний дневник</div><div class="card-meta"><span>9 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <!-- психология видео 5 -->
-                <div class="content-card video-card" data-video-cat="psychology-videos" onclick="openVideoModal('Психология: Как перестать тревожиться')"><div class="card-category">🧠 Психология</div><div class="card-title">Как перестать тревожиться</div><div class="card-meta"><span>14 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="psychology-videos" onclick="openVideoModal('Психология: Внутренний критик')"><div class="card-category">🧠 Психология</div><div class="card-title">Внутренний критик</div><div class="card-meta"><span>11 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="psychology-videos" onclick="openVideoModal('Психология: Привязанность')"><div class="card-category">🧠 Психология</div><div class="card-title">Привязанность</div><div class="card-meta"><span>16 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="psychology-videos" onclick="openVideoModal('Психология: Эмоциональный интеллект')"><div class="card-category">🧠 Психология</div><div class="card-title">Эмоц. интеллект</div><div class="card-meta"><span>13 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
-                <div class="content-card video-card" data-video-cat="psychology-videos" onclick="openVideoModal('Психология: Созависимость')"><div class="card-category">🧠 Психология</div><div class="card-title">Созависимость</div><div class="card-meta"><span>18 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div></div>
+                <!-- Медитации (реальные YouTube видео) -->
+                <div class="content-card video-card" data-category="meditation" onclick="openVideo('Медитация для начинающих', 'inpok4MKVLM')">
+                    <div class="card-category">🧘 Медитации</div>
+                    <div class="card-title">Медитация для начинающих</div>
+                    <div class="card-meta"><span>10 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="meditation" onclick="openVideo('Медитация осознанности', 'UK%20meditation')">
+                    <div class="card-category">🧘 Медитации</div>
+                    <div class="card-title">Медитация осознанности</div>
+                    <div class="card-meta"><span>15 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="meditation" onclick="openVideo('Медитация для сна', 'KmUuItR4NZE')">
+                    <div class="card-category">🧘 Медитации</div>
+                    <div class="card-title">Медитация для сна</div>
+                    <div class="card-meta"><span>20 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="meditation" onclick="openVideo('Медитация любящей доброты', '8B9NmNB0p_g')">
+                    <div class="card-category">🧘 Медитации</div>
+                    <div class="card-title">Медитация любящей доброты</div>
+                    <div class="card-meta"><span>12 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="meditation" onclick="openVideo('Медитация сканирование тела', '2zWUq3Pvx8k')">
+                    <div class="card-category">🧘 Медитации</div>
+                    <div class="card-title">Сканирование тела</div>
+                    <div class="card-meta"><span>15 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+
+                <!-- Йога -->
+                <div class="content-card video-card" data-category="yoga" onclick="openVideo('Йога для начинающих', 'v7AYKMP6rOE')">
+                    <div class="card-category">🧘‍♀️ Йога</div>
+                    <div class="card-title">Йога для начинающих</div>
+                    <div class="card-meta"><span>20 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="yoga" onclick="openVideo('Утренняя йога', 'rvvXU7wS_GA')">
+                    <div class="card-category">🧘‍♀️ Йога</div>
+                    <div class="card-title">Утренняя йога</div>
+                    <div class="card-meta"><span>15 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="yoga" onclick="openVideo('Йога для спины', 'RYldm1zL-vI')">
+                    <div class="card-category">🧘‍♀️ Йога</div>
+                    <div class="card-title">Йога для спины</div>
+                    <div class="card-meta"><span>12 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="yoga" onclick="openVideo('Йога для расслабления', 'HBTf7I8OALw')">
+                    <div class="card-category">🧘‍♀️ Йога</div>
+                    <div class="card-title">Йога для расслабления</div>
+                    <div class="card-meta"><span>25 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="yoga" onclick="openVideo('Йога нидра', '8aN5C9L2Z0I')">
+                    <div class="card-category">🧘‍♀️ Йога</div>
+                    <div class="card-title">Йога нидра</div>
+                    <div class="card-meta"><span>30 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+
+                <!-- Дыхание -->
+                <div class="content-card video-card" data-category="breathing" onclick="openVideo('Дыхание 4-7-8', '1jSHqHqW0iA')">
+                    <div class="card-category">🌬️ Дыхание</div>
+                    <div class="card-title">Дыхание 4-7-8</div>
+                    <div class="card-meta"><span>5 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="breathing" onclick="openVideo('Капалабхати', 'lwlCb1Z_7q8')">
+                    <div class="card-category">🌬️ Дыхание</div>
+                    <div class="card-title">Капалабхати</div>
+                    <div class="card-meta"><span>8 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="breathing" onclick="openVideo('Нади шодхана', '4xL8w_gVqmo')">
+                    <div class="card-category">🌬️ Дыхание</div>
+                    <div class="card-title">Нади шодхана</div>
+                    <div class="card-meta"><span>10 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="breathing" onclick="openVideo('Дыхание для успокоения', 'zTpV3w_9qYU')">
+                    <div class="card-category">🌬️ Дыхание</div>
+                    <div class="card-title">Дыхание для успокоения</div>
+                    <div class="card-meta"><span>7 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="breathing" onclick="openVideo('Дыхание для энергии', 'kYfN6wR_mLg')">
+                    <div class="card-category">🌬️ Дыхание</div>
+                    <div class="card-title">Дыхание для энергии</div>
+                    <div class="card-meta"><span>6 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+
+                <!-- Лекции -->
+                <div class="content-card video-card" data-category="lectures" onclick="openVideo('Лекция о стрессе', 'Fwj3XKqJZ1I')">
+                    <div class="card-category">📺 Лекции</div>
+                    <div class="card-title">Лекция о стрессе</div>
+                    <div class="card-meta"><span>45 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="lectures" onclick="openVideo('Лекция о счастье', 'b4p9qZ4Q0qI')">
+                    <div class="card-category">📺 Лекции</div>
+                    <div class="card-title">Лекция о счастье</div>
+                    <div class="card-meta"><span>30 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="lectures" onclick="openVideo('Нейробиология', '8bG9Y8X8q0U')">
+                    <div class="card-category">📺 Лекции</div>
+                    <div class="card-title">Нейробиология</div>
+                    <div class="card-meta"><span>50 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="lectures" onclick="openVideo('Психология личности', 'Z9qY2X5L1pQ')">
+                    <div class="card-category">📺 Лекции</div>
+                    <div class="card-title">Психология личности</div>
+                    <div class="card-meta"><span>40 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="lectures" onclick="openVideo('Мотивация', 't9qY2X3L4pR')">
+                    <div class="card-category">📺 Лекции</div>
+                    <div class="card-title">Мотивация</div>
+                    <div class="card-meta"><span>35 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+
+                <!-- Практики -->
+                <div class="content-card video-card" data-category="practices" onclick="openVideo('Заземление', 'pX8qY2L9Z4M')">
+                    <div class="card-category">✨ Практики</div>
+                    <div class="card-title">Заземление</div>
+                    <div class="card-meta"><span>8 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="practices" onclick="openVideo('Благодарность', 'rX5qY8L2Z1N')">
+                    <div class="card-category">✨ Практики</div>
+                    <div class="card-title">Благодарность</div>
+                    <div class="card-meta"><span>7 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="practices" onclick="openVideo('Антистресс', 'sX3qY6L1Z8B')">
+                    <div class="card-category">✨ Практики</div>
+                    <div class="card-title">Антистресс</div>
+                    <div class="card-meta"><span>5 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="practices" onclick="openVideo('Творческая пауза', 'tX7qY4L9Z2C')">
+                    <div class="card-category">✨ Практики</div>
+                    <div class="card-title">Творческая пауза</div>
+                    <div class="card-meta"><span>6 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="practices" onclick="openVideo('Вечерний дневник', 'uX2qY5L8Z3D')">
+                    <div class="card-category">✨ Практики</div>
+                    <div class="card-title">Вечерний дневник</div>
+                    <div class="card-meta"><span>9 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+
+                <!-- Психология видео -->
+                <div class="content-card video-card" data-category="psychology-videos" onclick="openVideo('Как перестать тревожиться', 'vX1qY3L6Z4E')">
+                    <div class="card-category">🧠 Психология</div>
+                    <div class="card-title">Как перестать тревожиться</div>
+                    <div class="card-meta"><span>14 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="psychology-videos" onclick="openVideo('Внутренний критик', 'wX4qY7L2Z5F')">
+                    <div class="card-category">🧠 Психология</div>
+                    <div class="card-title">Внутренний критик</div>
+                    <div class="card-meta"><span>11 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="psychology-videos" onclick="openVideo('Привязанность', 'xX9qY1L4Z6G')">
+                    <div class="card-category">🧠 Психология</div>
+                    <div class="card-title">Привязанность</div>
+                    <div class="card-meta"><span>16 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="psychology-videos" onclick="openVideo('Эмоциональный интеллект', 'yX6qY2L7Z8H')">
+                    <div class="card-category">🧠 Психология</div>
+                    <div class="card-title">Эмоциональный интеллект</div>
+                    <div class="card-meta"><span>13 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="psychology-videos" onclick="openVideo('Созависимость', 'zX3qY8L1Z9J')">
+                    <div class="card-category">🧠 Психология</div>
+                    <div class="card-title">Созависимость</div>
+                    <div class="card-meta"><span>18 мин</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
             </div>
         </div>
 
@@ -553,57 +781,83 @@
         </footer>
     </div>
 
-    <!-- Модальное окно для видео -->
+    <!-- Модальное окно для видео с YouTube плеером -->
     <div class="modal" id="videoModal">
         <div class="modal-content">
             <div class="modal-title" id="modalVideoTitle">Заголовок видео</div>
-            <div class="video-player">
-                <i class="fas fa-play-circle"></i>
-                <span>Плеер видео</span>
-                <span style="font-size: 0.9rem; opacity: 0.8;">(демо-режим)</span>
+            <div class="video-wrapper" id="videoWrapper">
+                <iframe id="youtubePlayer" src="" allowfullscreen></iframe>
             </div>
             <button class="close-btn" onclick="closeVideoModal()">Закрыть</button>
         </div>
     </div>
 
     <script>
-        // Функции для модального окна (только видео)
+        // Переменные для модального окна
         const modal = document.getElementById('videoModal');
         const modalTitle = document.getElementById('modalVideoTitle');
+        const youtubePlayer = document.getElementById('youtubePlayer');
 
-        window.openVideoModal = function(title) {
+        // Функция открытия видео с реальным YouTube ID
+        function openVideo(title, videoId) {
             modalTitle.innerText = title;
+            // Формируем URL для YouTube плеера с автозапуском
+            youtubePlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        window.closeVideoModal = function() {
+        // Функция закрытия модального окна
+        function closeVideoModal() {
             modal.classList.remove('active');
+            youtubePlayer.src = ''; // останавливаем видео
             document.body.style.overflow = '';
         }
 
-        // Закрытие по клику вне модалки
+        // Закрытие по клику на фон
         modal.addEventListener('click', function(e) {
-            if (e.target === modal) closeVideoModal();
+            if (e.target === modal) {
+                closeVideoModal();
+            }
         });
 
-        // Фильтрация видео по категориям
-        const videoChips = document.querySelectorAll('#videoChips .chip');
-        const videoCards = document.querySelectorAll('.video-card');
+        // Навигация (плавный скролл)
+        document.getElementById('navArticlesBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('articles').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        document.getElementById('navVideosBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('videos').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        document.getElementById('heroArticlesBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('articles').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        document.getElementById('heroVideosBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('videos').scrollIntoView({ behavior: 'smooth' });
+        });
 
-        videoChips.forEach(chip => {
+        // Фильтрация статей
+        const articleChips = document.querySelectorAll('#articleChips .chip');
+        const articleCards = document.querySelectorAll('#articlesGrid .content-card');
+
+        articleChips.forEach(chip => {
             chip.addEventListener('click', function() {
-                // убираем активный класс у всех чипсов
-                videoChips.forEach(c => c.classList.remove('active'));
+                articleChips.forEach(c => c.classList.remove('active'));
                 this.classList.add('active');
-
-                const category = this.dataset.video; // all-videos, meditation-videos и тд
-
-                videoCards.forEach(card => {
-                    if (category === 'all-videos') {
+                
+                const category = this.dataset.category;
+                
+                articleCards.forEach(card => {
+                    if (category === 'all-articles') {
                         card.style.display = 'block';
                     } else {
-                        if (card.dataset.videoCat === category) {
+                        if (card.dataset.category === category) {
                             card.style.display = 'block';
                         } else {
                             card.style.display = 'none';
@@ -613,50 +867,26 @@
             });
         });
 
-        // Плавный скролл до секций
-        document.getElementById('navArticlesBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('articles').scrollIntoView({ behavior: 'smooth' });
-        });
-        document.getElementById('navVideosBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('videos').scrollIntoView({ behavior: 'smooth' });
-        });
-        document.getElementById('heroArticlesBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('articles').scrollIntoView({ behavior: 'smooth' });
-        });
-        document.getElementById('heroVideosBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('videos').scrollIntoView({ behavior: 'smooth' });
-        });
+        // Фильтрация видео
+        const videoChips = document.querySelectorAll('#videoChips .chip');
+        const videoCards = document.querySelectorAll('.video-card');
 
-        // Для статей фильтрация по категориям (упрощённая)
-        const articleChips = document.querySelectorAll('#articleChips .chip');
-        const articleCards = document.querySelectorAll('#all-articles .article-link'); // все ссылки
-
-        articleChips.forEach(chip => {
+        videoChips.forEach(chip => {
             chip.addEventListener('click', function() {
-                articleChips.forEach(c => c.classList.remove('active'));
+                videoChips.forEach(c => c.classList.remove('active'));
                 this.classList.add('active');
-
-                const cat = this.dataset.category; // all-articles, psychology-articles и тд
-
-                articleCards.forEach(card => {
-                    const cardCat = card.querySelector('.card-category')?.innerText.trim() || '';
-                    if (cat === 'all-articles') {
-                        card.style.display = 'block';
+                
+                const category = this.dataset.category;
+                
+                videoCards.forEach(card => {
+                    if (category === 'all-videos') {
+                        card.classList.remove('hidden');
                     } else {
-                        // categories mapping: psychology-articles -> Психология
-                        let shouldShow = false;
-                        if (cat === 'psychology-articles' && cardCat.includes('Психология')) shouldShow = true;
-                        else if (cat === 'selfdev-articles' && cardCat.includes('Саморазвитие')) shouldShow = true;
-                        else if (cat === 'health-articles' && cardCat.includes('Здоровье')) shouldShow = true;
-                        else if (cat === 'mindfulness-articles' && cardCat.includes('Осознанность')) shouldShow = true;
-                        else if (cat === 'relations-articles' && cardCat.includes('Отношения')) shouldShow = true;
-                        else if (cat === 'habits-articles' && cardCat.includes('Привычки')) shouldShow = true;
-
-                        card.style.display = shouldShow ? 'block' : 'none';
+                        if (card.dataset.category === category) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
                     }
                 });
             });
