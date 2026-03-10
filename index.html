@@ -31,8 +31,8 @@
             --disclaimer-bg: rgba(255, 255, 255, 0.5);
             --disclaimer-border: rgba(219, 234, 255, 0.5);
             --footer-color: #8a9fc0;
-            --logo-gradient-1: #d8c3e6; /* нежно-лавандовый */
-            --logo-gradient-2: #b8d0ff; /* нежно-голубой */
+            --logo-color: #1e4a7a;
+            --cloud-color: #ffffff;
             --icon-play-bg: rgba(231, 241, 255, 0.8);
             --icon-play-color: #1e4a7a;
             --close-btn-bg: rgba(231, 241, 255, 0.8);
@@ -64,8 +64,8 @@
                 --disclaimer-bg: rgba(30, 35, 50, 0.5);
                 --disclaimer-border: rgba(70, 85, 120, 0.5);
                 --footer-color: #7f8fb0;
-                --logo-gradient-1: #b39bc8; /* приглушенный лавандовый */
-                --logo-gradient-2: #8aa5d0; /* приглушенный голубой */
+                --logo-color: #b0c8ff;
+                --cloud-color: #ffffff;
                 --icon-play-bg: rgba(70, 85, 120, 0.8);
                 --icon-play-color: #b0c8ff;
                 --close-btn-bg: rgba(70, 85, 120, 0.8);
@@ -122,15 +122,11 @@
         .logo {
             font-size: 2.2rem;
             font-weight: 500;
-            background: linear-gradient(135deg, var(--logo-gradient-1), var(--logo-gradient-2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--logo-color);
             display: flex;
             align-items: center;
             gap: 12px;
             letter-spacing: -0.02em;
-            text-shadow: 0 2px 10px rgba(200, 180, 240, 0.3);
         }
 
         /* Hero секция */
@@ -143,10 +139,7 @@
         .hero h1 {
             font-size: 4.5rem;
             font-weight: 450;
-            background: linear-gradient(135deg, var(--logo-gradient-1), var(--logo-gradient-2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--logo-color);
             margin-bottom: 1.5rem;
             line-height: 1.1;
             letter-spacing: -0.02em;
@@ -208,10 +201,7 @@
             font-size: 2.8rem;
             font-weight: 400;
             text-align: center;
-            background: linear-gradient(135deg, var(--logo-gradient-1), var(--logo-gradient-2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--logo-color);
             margin-bottom: 3rem;
             letter-spacing: -0.02em;
         }
@@ -406,10 +396,7 @@
             font-size: 2rem;
             font-weight: 450;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--logo-gradient-1), var(--logo-gradient-2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--logo-color);
             text-align: center;
         }
 
