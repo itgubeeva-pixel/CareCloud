@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareCloud — Твоё пространство заботы о себе</title>
+    <title>CareCloud — Мягкая Терапия</title>
     <style>
         * {
             margin: 0;
@@ -31,8 +31,8 @@
             --disclaimer-bg: rgba(255, 255, 255, 0.5);
             --disclaimer-border: rgba(219, 234, 255, 0.5);
             --footer-color: #8a9fc0;
-            --logo-color: #1e4a7a;
-            --cloud-color: #ffffff;
+            --logo-gradient-1: #d8c3e6; /* нежно-лавандовый */
+            --logo-gradient-2: #b8d0ff; /* нежно-голубой */
             --icon-play-bg: rgba(231, 241, 255, 0.8);
             --icon-play-color: #1e4a7a;
             --close-btn-bg: rgba(231, 241, 255, 0.8);
@@ -64,8 +64,8 @@
                 --disclaimer-bg: rgba(30, 35, 50, 0.5);
                 --disclaimer-border: rgba(70, 85, 120, 0.5);
                 --footer-color: #7f8fb0;
-                --logo-color: #b0c8ff;
-                --cloud-color: #ffffff;
+                --logo-gradient-1: #b39bc8; /* приглушенный лавандовый */
+                --logo-gradient-2: #8aa5d0; /* приглушенный голубой */
                 --icon-play-bg: rgba(70, 85, 120, 0.8);
                 --icon-play-color: #b0c8ff;
                 --close-btn-bg: rgba(70, 85, 120, 0.8);
@@ -104,7 +104,7 @@
             z-index: -1;
         }
 
-        /* Навигация (только логотип, кнопки убраны) */
+        /* Навигация (только логотип по центру) */
         .navbar {
             display: flex;
             justify-content: center;
@@ -120,19 +120,17 @@
         }
 
         .logo {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 500;
-            color: var(--logo-color);
+            background: linear-gradient(135deg, var(--logo-gradient-1), var(--logo-gradient-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             display: flex;
             align-items: center;
             gap: 12px;
             letter-spacing: -0.02em;
-        }
-
-        .logo i {
-            color: var(--cloud-color);
-            font-size: 2.2rem;
-            filter: drop-shadow(0 4px 8px var(--shadow));
+            text-shadow: 0 2px 10px rgba(200, 180, 240, 0.3);
         }
 
         /* Hero секция */
@@ -145,7 +143,10 @@
         .hero h1 {
             font-size: 4.5rem;
             font-weight: 450;
-            color: var(--logo-color);
+            background: linear-gradient(135deg, var(--logo-gradient-1), var(--logo-gradient-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 1.5rem;
             line-height: 1.1;
             letter-spacing: -0.02em;
@@ -207,7 +208,10 @@
             font-size: 2.8rem;
             font-weight: 400;
             text-align: center;
-            color: var(--logo-color);
+            background: linear-gradient(135deg, var(--logo-gradient-1), var(--logo-gradient-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 3rem;
             letter-spacing: -0.02em;
         }
@@ -402,7 +406,10 @@
             font-size: 2rem;
             font-weight: 450;
             margin-bottom: 1.5rem;
-            color: var(--logo-color);
+            background: linear-gradient(135deg, var(--logo-gradient-1), var(--logo-gradient-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             text-align: center;
         }
 
@@ -512,6 +519,9 @@
                 padding: 0.7rem 1.8rem;
                 font-size: 1rem;
             }
+            .logo {
+                font-size: 1.6rem;
+            }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -520,7 +530,7 @@
     <div class="container">
         <!-- Навигация (только логотип по центру) -->
         <nav class="navbar">
-            <div class="logo"><i class="fas fa-cloud"></i> CareCloud</div>
+            <div class="logo">CareCloud — Мягкая Терапия</div>
         </nav>
 
         <!-- Hero с кнопками под текстом -->
@@ -560,7 +570,7 @@
             </div>
         </div>
 
-        <!-- СТАТЬИ (полностью сохранены) -->
+        <!-- СТАТЬИ -->
         <div id="articles" class="section">
             <h2 class="section-title"><i class="fas fa-book-open"></i> Все статьи</h2>
 
@@ -575,7 +585,6 @@
             </div>
 
             <div class="cards-grid" id="articlesGrid">
-                <!-- Здесь все твои статьи (я не трогал, оставил как есть) -->
                 <!-- ПСИХОЛОГИЯ -->
                 <a href="https://skillbox.ru/media/growth/emotional-regulation/" target="_blank" class="content-card" data-category="psychology">
                     <div class="card-category">🧠 Психология</div>
@@ -770,7 +779,7 @@
             </div>
         </div>
 
-        <!-- ВИДЕО (с твоим порядком категорий) -->
+        <!-- ВИДЕО -->
         <div id="videos" class="section">
             <h2 class="section-title"><i class="fas fa-video"></i> Все видео</h2>
 
@@ -984,7 +993,7 @@
             <div class="disclaimer-block">
                 <p class="disclaimer-text">🌿 CareCloud — это пространство для вдохновения и самопомощи. Здесь собраны статьи и видео, которые помогут тебе лучше понять себя и найти ресурс для гармоничной жизни.</p>
             </div>
-            
+
             <div class="disclaimer-block">
                 <p class="disclaimer-gray">⚠️ Важно: Я не заменяю профессиональную психологическую помощь. Если тебе тяжело, обратись к специалисту. Забота о себе — это важно, но иногда нам нужна поддержка профессионала.</p>
             </div>
@@ -999,7 +1008,7 @@
         </div>
 
         <footer class="footer">
-            ☁️ CareCloud — Твоё пространство заботы о себе · сделано с любовью
+            ☁️ CareCloud — Мягкая Терапия · Сделано с любовью
         </footer>
     </div>
 
@@ -1044,7 +1053,7 @@
             e.preventDefault();
             document.getElementById('articles').scrollIntoView({ behavior: 'smooth' });
         });
-        
+
         document.getElementById('heroVideosBtn').addEventListener('click', function(e) {
             e.preventDefault();
             document.getElementById('videos').scrollIntoView({ behavior: 'smooth' });
@@ -1059,7 +1068,7 @@
                 videoChips.forEach(c => c.classList.remove('active'));
                 this.classList.add('active');
                 const category = this.dataset.category;
-                
+
                 videoCards.forEach(card => {
                     if (category === 'all') {
                         card.classList.remove('hidden');
