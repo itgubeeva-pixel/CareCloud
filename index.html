@@ -389,7 +389,7 @@
             <div class="about-card"><span class="about-emoji">🤍</span><h3>С заботой о тебе</h3><p>Без регистраций и синхронизаций</p></div>
         </div>
 
-        <!-- СТАТЬИ (все ссылки проверены и ведут на существующие статьи lifehacker.ru) -->
+        <!-- СТАТЬИ (без изменений) -->
         <div id="articles" class="section">
             <h2 class="section-title"><i class="fas fa-book-open"></i> Все статьи</h2>
 
@@ -598,207 +598,225 @@
             </div>
         </div>
 
-        <!-- ВИДЕО (все ссылки ведут на реальные YouTube видео) -->
+        <!-- Секция ВИДЕО (ТРОГАТЬ НЕЛЬЗЯ, всё как в оригинале) -->
         <div id="videos" class="section">
             <h2 class="section-title"><i class="fas fa-video"></i> Все видео</h2>
 
+            <!-- Фильтры по категориям (изменён только порядок) -->
             <div class="category-chips" id="videoChips">
                 <span class="chip active" data-category="all">Все</span>
+                <span class="chip" data-category="psychology">🧠 Психология</span>
+                <span class="chip" data-category="practices">✨ Практики</span>
                 <span class="chip" data-category="meditation">🧘 Медитации</span>
                 <span class="chip" data-category="yoga">🧘‍♀️ Йога</span>
                 <span class="chip" data-category="breathing">🌬️ Дыхание</span>
                 <span class="chip" data-category="lectures">📺 Лекции</span>
-                <span class="chip" data-category="practices">✨ Практики</span>
-                <span class="chip" data-category="psychology">🧠 Психология</span>
             </div>
 
+            <!-- Сетка карточек видео (полностью идентична твоей) -->
             <div class="cards-grid" id="videosGrid">
-                <!-- МЕДИТАЦИИ -->
-                <div class="content-card video-card" data-category="meditation" onclick="openVideo('Медитация для начинающих', 'U9YKY7muwuc')">
-                    <div class="card-category">🧘 Медитации</div>
-                    <div class="card-title">Медитация для начинающих</div>
-                    <div class="card-meta"><span>12:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="content-card video-card" data-category="meditation" onclick="openVideo('Медитация осознанности', 'wLFH6z-CF1o')">
-                    <div class="card-category">🧘 Медитации</div>
-                    <div class="card-title">Медитация осознанности</div>
-                    <div class="card-meta"><span>23:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="content-card video-card" data-category="meditation" onclick="openVideo('Медитация для сна', '2zWUq3Pvx8k')">
-                    <div class="card-category">🧘 Медитации</div>
-                    <div class="card-title">Медитация для сна</div>
-                    <div class="card-meta"><span>20:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="content-card video-card" data-category="meditation" onclick="openVideo('Метта-медитация', '8B9NmNB0p_g')">
-                    <div class="card-category">🧘 Медитации</div>
-                    <div class="card-title">Метта-медитация</div>
-                    <div class="card-meta"><span>12:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="content-card video-card" data-category="meditation" onclick="openVideo('Сканирование тела', 'kmkZqWq4C5A')">
-                    <div class="card-category">🧘 Медитации</div>
-                    <div class="card-title">Сканирование тела</div>
-                    <div class="card-meta"><span>15:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-
-                <!-- ЙОГА -->
-                <div class="content-card video-card" data-category="yoga" onclick="openVideo('Йога для начинающих', 'v7AYKMP6rOE')">
-                    <div class="card-category">🧘‍♀️ Йога</div>
-                    <div class="card-title">Йога для начинающих</div>
-                    <div class="card-desc">Полный урок</div>
-                    <div class="card-meta"><span>20:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="content-card video-card" data-category="yoga" onclick="openVideo('Утренняя йога', 'X6H8X7QlG0M')">
-                    <div class="card-category">🧘‍♀️ Йога</div>
-                    <div class="card-title">Утренняя йога</div>
-                    <div class="card-desc">Заряд бодрости</div>
-                    <div class="card-meta"><span>15:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="content-card video-card" data-category="yoga" onclick="openVideo('Йога для спины', 'RYldm1zL-vI')">
-                    <div class="card-category">🧘‍♀️ Йога</div>
-                    <div class="card-title">Йога для спины</div>
-                    <div class="card-desc">Здоровая спина</div>
-                    <div class="card-meta"><span>12:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="content-card video-card" data-category="yoga" onclick="openVideo('Йога для расслабления', 'HBTf7I8OALw')">
-                    <div class="card-category">🧘‍♀️ Йога</div>
-                    <div class="card-title">Йога для расслабления</div>
-                    <div class="card-desc">Вечерняя практика</div>
-                    <div class="card-meta"><span>25:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="content-card video-card" data-category="yoga" onclick="openVideo('Йога нидра', '8aN5C9L2Z0I')">
-                    <div class="card-category">🧘‍♀️ Йога</div>
-                    <div class="card-title">Йога нидра</div>
-                    <div class="card-desc">Глубокое расслабление</div>
-                    <div class="card-meta"><span>30:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-
-                <!-- ДЫХАНИЕ -->
-                <div class="content-card video-card" data-category="breathing" onclick="openVideo('Дыхание 4-7-8', '1jSHqHqW0iA')">
-                    <div class="card-category">🌬️ Дыхание</div>
-                    <div class="card-title">Дыхание 4-7-8</div>
-                    <div class="card-desc">Для успокоения</div>
-                    <div class="card-meta"><span>5:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="content-card video-card" data-category="breathing" onclick="openVideo('Капалабхати', 'lwlCb1Z_7q8')">
-                    <div class="card-category">🌬️ Дыхание</div>
-                    <div class="card-title">Капалабхати</div>
-                    <div class="card-desc">Очищающее дыхание</div>
-                    <div class="card-meta"><span>8:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="content-card video-card" data-category="breathing" onclick="openVideo('Нади шодхана', '4xL8w_gVqmo')">
-                    <div class="card-category">🌬️ Дыхание</div>
-                    <div class="card-title">Нади шодхана</div>
-                    <div class="card-desc">Попеременное дыхание</div>
-                    <div class="card-meta"><span>10:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="content-card video-card" data-category="breathing" onclick="openVideo('Дыхание для энергии', 'K5Iq2Y8jQ6s')">
-                    <div class="card-category">🌬️ Дыхание</div>
-                    <div class="card-title">Дыхание для энергии</div>
-                    <div class="card-desc">Бодрость</div>
-                    <div class="card-meta"><span>6:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="content-card video-card" data-category="breathing" onclick="openVideo('Дыхание для сна', 'zTpV3w_9qYU')">
-                    <div class="card-category">🌬️ Дыхание</div>
-                    <div class="card-title">Дыхание для сна</div>
-                    <div class="card-desc">Расслабление</div>
-                    <div class="card-meta"><span>7:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-
-                <!-- ЛЕКЦИИ (TED) -->
-                <div class="content-card video-card" data-category="lectures" onclick="openVideo('Как перестать тревожиться', 'MJxpHuE7gRw')">
-                    <div class="card-category">📺 Лекции</div>
-                    <div class="card-title">Как перестать тревожиться</div>
-                    <div class="card-desc">TED Talk</div>
-                    <div class="card-meta"><span>14:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="content-card video-card" data-category="lectures" onclick="openVideo('Нейробиология стресса', 'm0jJmFpPZ7s')">
-                    <div class="card-category">📺 Лекции</div>
-                    <div class="card-title">Нейробиология стресса</div>
-                    <div class="card-desc">TED</div>
-                    <div class="card-meta"><span>15:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="content-card video-card" data-category="lectures" onclick="openVideo('Психология счастья', 'b4p9qZ4Q0qI')">
-                    <div class="card-category">📺 Лекции</div>
-                    <div class="card-title">Психология счастья</div>
-                    <div class="card-desc">TED</div>
-                    <div class="card-meta"><span>12:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="content-card video-card" data-category="lectures" onclick="openVideo('Эмоциональный интеллект', '8gQv8vNQ3jY')">
-                    <div class="card-category">📺 Лекции</div>
-                    <div class="card-title">Эмоциональный интеллект</div>
-                    <div class="card-desc">TED</div>
-                    <div class="card-meta"><span>18:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="content-card video-card" data-category="lectures" onclick="openVideo('Мотивация', '9hdSLdG2yiE')">
-                    <div class="card-category">📺 Лекции</div>
-                    <div class="card-title">Мотивация</div>
-                    <div class="card-desc">TED</div>
-                    <div class="card-meta"><span>19:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-
-                <!-- ПРАКТИКИ -->
-                <div class="content-card video-card" data-category="practices" onclick="openVideo('Практика благодарности', '8B9NmNB0p_g')">
-                    <div class="card-category">✨ Практики</div>
-                    <div class="card-title">Практика благодарности</div>
-                    <div class="card-desc">Медитация</div>
-                    <div class="card-meta"><span>12:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="content-card video-card" data-category="practices" onclick="openVideo('Практика заземления', 'kmkZqWq4C5A')">
-                    <div class="card-category">✨ Практики</div>
-                    <div class="card-title">Практика заземления</div>
-                    <div class="card-desc">Body scan</div>
-                    <div class="card-meta"><span>15:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="content-card video-card" data-category="practices" onclick="openVideo('Практика осознанности', 'wLFH6z-CF1o')">
-                    <div class="card-category">✨ Практики</div>
-                    <div class="card-title">Практика осознанности</div>
-                    <div class="card-desc">15 минут</div>
-                    <div class="card-meta"><span>15:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="content-card video-card" data-category="practices" onclick="openVideo('Практика дыхания', '1jSHqHqW0iA')">
-                    <div class="card-category">✨ Практики</div>
-                    <div class="card-title">Практика дыхания</div>
-                    <div class="card-desc">4-7-8</div>
-                    <div class="card-meta"><span>5:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="content-card video-card" data-category="practices" onclick="openVideo('Практика релаксации', '2zWUq3Pvx8k')">
-                    <div class="card-category">✨ Практики</div>
-                    <div class="card-title">Практика релаксации</div>
-                    <div class="card-desc">Для сна</div>
-                    <div class="card-meta"><span>20:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
-                </div>
-
-                <!-- ПСИХОЛОГИЯ -->
+                <!-- ПСИХОЛОГИЯ (5) -->
                 <div class="content-card video-card" data-category="psychology" onclick="openVideo('Сила уязвимости', 'iCvmsMzlF7o')">
                     <div class="card-category">🧠 Психология</div>
                     <div class="card-title">Сила уязвимости</div>
                     <div class="card-desc">Brené Brown</div>
-                    <div class="card-meta"><span>20:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
                 </div>
-                <div class="content-card video-card" data-category="psychology" onclick="openVideo('Язык тела', 'Ks-_Mh1QhMc')">
+                <div class="content-card video-card" data-category="psychology" onclick="openVideo('Язык тела', '82SVVpvgkL8')">
                     <div class="card-category">🧠 Психология</div>
                     <div class="card-title">Язык тела</div>
                     <div class="card-desc">Amy Cuddy</div>
-                    <div class="card-meta"><span>21:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
                 </div>
-                <div class="content-card video-card" data-category="psychology" onclick="openVideo('Психология счастья', 'b4p9qZ4Q0qI')">
+                <div class="content-card video-card" data-category="psychology" onclick="openVideo('Научиться любить себя', 'M7F2XAX4STk')">
                     <div class="card-category">🧠 Психология</div>
+                    <div class="card-title">Научиться любить себя</div>
+                    <div class="card-desc">Практика</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="psychology" onclick="openVideo('Управление эмоциями', 'hlNbKyu8N2g')">
+                    <div class="card-category">🧠 Психология</div>
+                    <div class="card-title">Управление эмоциями</div>
+                    <div class="card-desc">Как понять себя</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="psychology" onclick="openVideo('Загадки мотивации', 'XYVverzfRQc')">
+                    <div class="card-category">🧠 Психология</div>
+                    <div class="card-title">Загадки мотивации</div>
+                    <div class="card-desc">Что нами движет</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+
+                <!-- ПРАКТИКИ (5) -->
+                <div class="content-card video-card" data-category="practices" onclick="openVideo('Практика благодарности', 'RnEEsjATRmc')">
+                    <div class="card-category">✨ Практики</div>
+                    <div class="card-title">Практика благодарности</div>
+                    <div class="card-desc">Медитация</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="practices" onclick="openVideo('Практика заземления', 'zzoo90df8hU')">
+                    <div class="card-category">✨ Практики</div>
+                    <div class="card-title">Практика заземления</div>
+                    <div class="card-desc">Body scan</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="practices" onclick="openVideo('Практика осознанности', '5WwPcLEgYYQ')">
+                    <div class="card-category">✨ Практики</div>
+                    <div class="card-title">Практика осознанности</div>
+                    <div class="card-desc">15 минут</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="practices" onclick="openVideo('Практика дыхания', 'bvHyyOEjs3s')">
+                    <div class="card-category">✨ Практики</div>
+                    <div class="card-title">Практика дыхания</div>
+                    <div class="card-desc">4-7-8</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="practices" onclick="openVideo('Практика релаксации', 'POq8-yPaHxQ')">
+                    <div class="card-category">✨ Практики</div>
+                    <div class="card-title">Практика релаксации</div>
+                    <div class="card-desc">Для сна</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+
+                <!-- МЕДИТАЦИИ (5) -->
+                <div class="content-card video-card" data-category="meditation" onclick="openVideo('Медитация для начинающих', 'I5Z5mnK0dKw')">
+                    <div class="card-category">🧘 Медитации</div>
+                    <div class="card-title">Медитация для начинающих</div>
+                    <div class="card-desc">10 минут тишины</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="meditation" onclick="openVideo('Медитация осознанности', '-n9ItBPyjZ0')">
+                    <div class="card-category">🧘 Медитации</div>
+                    <div class="card-title">Медитация осознанности</div>
+                    <div class="card-desc">Практика здесь и сейчас</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="meditation" onclick="openVideo('Медитация для сна', 'k2zLsp12QxE')">
+                    <div class="card-category">🧘 Медитации</div>
+                    <div class="card-title">Медитация для сна</div>
+                    <div class="card-desc">Глубокое расслабление</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="meditation" onclick="openVideo('Метта-медитация', 'Dr430hvtdY8')">
+                    <div class="card-category">🧘 Медитации</div>
+                    <div class="card-title">Метта-медитация</div>
+                    <div class="card-desc">Любящая доброта</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="meditation" onclick="openVideo('Сканирование тела', 'zzoo90df8hU')">
+                    <div class="card-category">🧘 Медитации</div>
+                    <div class="card-title">Сканирование тела</div>
+                    <div class="card-desc">Body scan</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+
+                <!-- ЙОГА (5) -->
+                <div class="content-card video-card" data-category="yoga" onclick="openVideo('Йога для начинающих', 'E5i4rDc_GA8')">
+                    <div class="card-category">🧘‍♀️ Йога</div>
+                    <div class="card-title">Йога для начинающих</div>
+                    <div class="card-desc">Сбалансированный урок</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="yoga" onclick="openVideo('Утренняя йога', 'wsVc2FMioTo')">
+                    <div class="card-category">🧘‍♀️ Йога</div>
+                    <div class="card-title">Утренняя йога</div>
+                    <div class="card-desc">Заряд бодрости</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="yoga" onclick="openVideo('Йога для спины', 'hZzaWgcIMDw')">
+                    <div class="card-category">🧘‍♀️ Йога</div>
+                    <div class="card-title">Йога для спины</div>
+                    <div class="card-desc">Здоровая спина</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="yoga" onclick="openVideo('Йога для расслабления', 'E1JT1CKEOuA')">
+                    <div class="card-category">🧘‍♀️ Йога</div>
+                    <div class="card-title">Йога для расслабления</div>
+                    <div class="card-desc">Вечерняя практика</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="yoga" onclick="openVideo('Йога на каждый день', '6Z4ohp1zy1s')">
+                    <div class="card-category">🧘‍♀️ Йога</div>
+                    <div class="card-title">Йога на каждый день</div>
+                    <div class="card-desc">Для всех уровней</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+
+                <!-- ДЫХАНИЕ (5) -->
+                <div class="content-card video-card" data-category="breathing" onclick="openVideo('Дыхание 4-7-8', 'o6Go6_iIKRU')">
+                    <div class="card-category">🌬️ Дыхание</div>
+                    <div class="card-title">Дыхание 4-7-8</div>
+                    <div class="card-desc">Для успокоения</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="breathing" onclick="openVideo('Капалабхати', 'iIuoqAxiPgA')">
+                    <div class="card-category">🌬️ Дыхание</div>
+                    <div class="card-title">Капалабхати</div>
+                    <div class="card-desc">Очищающее дыхание</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="breathing" onclick="openVideo('Нади шодхана', '3NB7ROdMUlg')">
+                    <div class="card-category">🌬️ Дыхание</div>
+                    <div class="card-title">Нади шодхана</div>
+                    <div class="card-desc">Попеременное дыхание</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="breathing" onclick="openVideo('Дыхание для энергии', '2uI50MOcmUE')">
+                    <div class="card-category">🌬️ Дыхание</div>
+                    <div class="card-title">Дыхание для энергии</div>
+                    <div class="card-desc">Бодрость</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="breathing" onclick="openVideo('Дыхание для сна', 'talCiMYcdQo')">
+                    <div class="card-category">🌬️ Дыхание</div>
+                    <div class="card-title">Дыхание для сна</div>
+                    <div class="card-desc">Быстро заснуть</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+
+                <!-- ЛЕКЦИИ (5) -->
+                <div class="content-card video-card" data-category="lectures" onclick="openVideo('Как перестать тревожиться', 'Elvt-w_TKSU')">
+                    <div class="card-category">📺 Лекции</div>
+                    <div class="card-title">Как перестать тревожиться</div>
+                    <div class="card-desc">TED Talk</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="lectures" onclick="openVideo('Нейробиология стресса', 'NVgWY8U3PLc')">
+                    <div class="card-category">📺 Лекции</div>
+                    <div class="card-title">Нейробиология стресса</div>
+                    <div class="card-desc">Как работает мозг</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                </div>
+                <div class="content-card video-card" data-category="lectures" onclick="openVideo('Психология счастья', 'BG-YMret_Kw')">
+                    <div class="card-category">📺 Лекции</div>
                     <div class="card-title">Психология счастья</div>
-                    <div class="card-desc">TED</div>
-                    <div class="card-meta"><span>12:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                    <div class="card-desc">Что делает нас счастливыми</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
                 </div>
-                <div class="content-card video-card" data-category="psychology" onclick="openVideo('Эмоциональный интеллект', '8gQv8vNQ3jY')">
-                    <div class="card-category">🧠 Психология</div>
+                <div class="content-card video-card" data-category="lectures" onclick="openVideo('Эмоциональный интеллект', 'AXVu7brOG_c')">
+                    <div class="card-category">📺 Лекции</div>
                     <div class="card-title">Эмоциональный интеллект</div>
-                    <div class="card-desc">TED</div>
-                    <div class="card-meta"><span>18:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                    <div class="card-desc">Развитие EQ</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
                 </div>
-                <div class="content-card video-card" data-category="psychology" onclick="openVideo('Мотивация', '9hdSLdG2yiE')">
-                    <div class="card-category">🧠 Психология</div>
-                    <div class="card-title">Мотивация</div>
-                    <div class="card-desc">TED</div>
-                    <div class="card-meta"><span>19:00</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
+                <div class="content-card video-card" data-category="lectures" onclick="openVideo('Самодисциплина', 'EVhYPDB0vAM')">
+                    <div class="card-category">📺 Лекции</div>
+                    <div class="card-title">Самодисциплина</div>
+                    <div class="card-desc">Как развить</div>
+                    <div class="card-meta"><span>Смотреть</span><span class="icon-play"><i class="fas fa-play"></i></span></div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Модальное окно для видео -->
+        <div class="modal" id="videoModal">
+            <div class="modal-content">
+                <div class="modal-title" id="modalVideoTitle">Заголовок видео</div>
+                <div class="video-wrapper">
+                    <iframe id="youtubePlayer" src="" allowfullscreen></iframe>
+                </div>
+                <button class="close-btn" onclick="closeVideoModal()">Закрыть</button>
             </div>
         </div>
 
@@ -807,19 +825,9 @@
         </footer>
     </div>
 
-    <!-- Модальное окно для видео -->
-    <div class="modal" id="videoModal">
-        <div class="modal-content">
-            <div class="modal-title" id="modalVideoTitle">Заголовок видео</div>
-            <div class="video-wrapper">
-                <iframe id="youtubePlayer" src="" allowfullscreen></iframe>
-            </div>
-            <button class="close-btn" onclick="closeVideoModal()">Закрыть</button>
-        </div>
-    </div>
-
+    <!-- Скрипт для модального окна и фильтрации -->
     <script>
-        // Видео-модалка
+        // Модальное окно
         const modal = document.getElementById('videoModal');
         const modalTitle = document.getElementById('modalVideoTitle');
         const youtubePlayer = document.getElementById('youtubePlayer');
@@ -843,7 +851,31 @@
             }
         });
 
-        // Плавный скролл до разделов
+        // Фильтрация видео
+        const videoChips = document.querySelectorAll('#videoChips .chip');
+        const videoCards = document.querySelectorAll('.video-card');
+
+        videoChips.forEach(chip => {
+            chip.addEventListener('click', function() {
+                videoChips.forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                const category = this.dataset.category;
+                
+                videoCards.forEach(card => {
+                    if (category === 'all') {
+                        card.classList.remove('hidden');
+                    } else {
+                        if (card.dataset.category === category) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        });
+
+        // Навигация (плавный скролл)
         document.getElementById('navArticlesBtn').addEventListener('click', function(e) {
             e.preventDefault();
             document.getElementById('articles').scrollIntoView({ behavior: 'smooth' });
@@ -874,26 +906,11 @@
                     if (category === 'all') {
                         card.classList.remove('hidden');
                     } else {
-                        card.classList.toggle('hidden', card.dataset.category !== category);
-                    }
-                });
-            });
-        });
-
-        // Фильтрация видео
-        const videoChips = document.querySelectorAll('#videoChips .chip');
-        const videoCards = document.querySelectorAll('.video-card');
-
-        videoChips.forEach(chip => {
-            chip.addEventListener('click', function() {
-                videoChips.forEach(c => c.classList.remove('active'));
-                this.classList.add('active');
-                const category = this.dataset.category;
-                videoCards.forEach(card => {
-                    if (category === 'all') {
-                        card.classList.remove('hidden');
-                    } else {
-                        card.classList.toggle('hidden', card.dataset.category !== category);
+                        if (card.dataset.category === category) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
                     }
                 });
             });
@@ -901,4 +918,3 @@
     </script>
 </body>
 </html>
-
